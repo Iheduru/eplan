@@ -1,0 +1,204 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Sign Up / Sign In</title>
+</head>
+<body>
+    <div class="container">
+        <div class="left-panel">
+            <div class="text-container">
+                <button><h1 id="signup-btn" class="active" onclick="showSignUp()">Sign Up</h1></button>
+                <span><button><h1 id="signin-btn" onclick="showSignIn()">Sign In</h1></button></span>
+            </div>
+        </div>
+        <div class="right-panel">
+            <div class="form-container" id="sign-up-form">
+                <h2>Sign Up</h2>
+                <p>Fill in your details to create an account</p>
+                <form id="signup-form">
+                    <label for="full-name">Full Name</label>
+                    <input type="text" id="full-name" name="full-name" placeholder="Your Full Name" required>
+                    <span class="error" id="full-name-error"></span>
+            
+                    <label for="email">Your Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Your Email Address" required>
+                    <span class="error" id="email-error"></span>
+            
+                    <label for="password">Password</label>
+                    <div class="password-container">
+                        <input type="password" id="password" placeholder="Password" required>
+                     
+                    </div>
+                    <span class="error" id="password-error"></span>
+            
+                    <label for="confirm-password">Confirm Password</label>
+                    <div class="password-container">
+                        <input type="password" id="confirm-password" placeholder="Confirm Password" required>
+                      
+                    </div>
+                    <span class="error" id="confirm-password-error"></span>
+            
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="terms-checkbox" required>
+                        <span>I agree to <a href="#" class="toggle-link">Terms and Conditions</a></span>
+                    </label>
+                    <span class="error" id="terms-error"></span>
+            
+                    <button type="submit" ><a onclick="showSignIn()">Sign Up</a></button>
+                    <h2></h2>
+                </form>
+            </div>
+            <div class="form-container hidden" id="sign-in-form">
+                <h2>Sign In</h2>
+                <p>Enter your details to sign in</p>
+                <form id="signin-form">
+                    <label for="email-signin">Your Email Address</label>
+                    <input type="email" id="email-signin" placeholder="Your Email Address" required>
+                    <label for="password-signin">Password</label>
+                    <div class="password-container">
+                        <input type="password" id="password" placeholder="Password" required>
+                        <!--<button type="button" class="toggle-password" data-target="password">👁️</button>-->
+                    </div>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="terms-checkbox">
+                        <span>Keep me logged in </span>
+                    </label>
+                    <button type="submit" href="home.html">Sign In</button>
+                   <div class="next"> <span>-Or-</span></div>
+                   <div class="be"><span>Need an account ? <a href="#"  onclick="showSignUp()">Create one</a></span>
+                   
+                </div> 
+                <div class="space"><span><a href="#" class="toggle-link">Forgot password ?</a></span>
+                </div>
+                
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showSignUp() {
+            document.getElementById('sign-up-form').classList.remove('hidden');
+            document.getElementById('sign-in-form').classList.add('hidden');
+            document.getElementById('signup-btn').classList.add('active');
+            document.getElementById('signin-btn').classList.remove('active');
+        }
+    
+        function showSignIn() {
+            document.getElementById('sign-up-form').classList.add('hidden');
+            document.getElementById('sign-in-form').classList.remove('hidden');
+            document.getElementById('signup-btn').classList.remove('active');
+            document.getElementById('signin-btn').classList.add('active');
+        }
+    
+        function showError(fieldId, message) {
+            const errorElement = document.getElementById(fieldId + '-error');
+            errorElement.textContent = message;
+            errorElement.style.display = 'block';
+        }
+    
+        function clearErrors() {
+            const errorElements = document.getElementsByClassName('error');
+            for (let element of errorElements) {
+                element.textContent = '';
+                element.style.display = 'none';
+            }
+        }
+    
+        // Sign Up form validation and submission
+        document.getElementById('signup-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            clearErrors();
+            
+            const fullName = document.getElementById('full-name');
+            const email = document.getElementById('email');
+            const password = document.getElementById('password');
+            const confirmPassword = document.getElementById('confirm-password');
+            const termsCheckbox = document.getElementById('terms-checkbox');
+            
+            let isValid = true;
+    
+            if (!fullName.validity.valid) {
+                showError('full-name', 'Please enter your full name');
+                isValid = false;
+            }
+    
+            if (!email.validity.valid) {
+                showError('email', 'Please enter a valid email address');
+                isValid = false;
+            }
+    
+            if (!password.validity.valid) {
+                showError('password', 'Please enter a password');
+                isValid = false;
+            }
+    
+            if (password.value !== confirmPassword.value) {
+                showError('confirm-password', 'Passwords do not match');
+                isValid = false;
+            }
+    
+            if (!termsCheckbox.checked) {
+                showError('terms', 'Please agree to the Terms and Conditions');
+                isValid = false;
+            }
+    
+            if (isValid) {
+                // All validations passed
+                alert('Sign Up successful! Please sign in with your new account.');
+                this.reset();
+                showSignIn();
+            }
+        });
+    
+        // Sign In form validation
+        document.getElementById('signin-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            clearErrors();
+    
+            const email = document.getElementById('email-signin');
+            const password = document.getElementById('password-signin');
+    
+            let isValid = true;
+    
+            if (!email.validity.valid) {
+                showError('email-signin', 'Please enter a valid email address');
+                isValid = false;
+            }
+    
+            if (!password.validity.valid) {
+                showError('password-signin', 'Please enter your password');
+                isValid = false;
+            }
+    
+            if (isValid) {
+                alert('Sign In successful!');
+                // You can add code here to redirect to another page or perform other actions
+            }
+        });
+        function togglePasswordVisibility() {
+    const toggleButtons = document.querySelectorAll('.toggle-password');
+    
+    toggleButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const targetId = this.getAttribute('data-target');
+            const passwordInput = document.getElementById(targetId);
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                this.textContent = '🙈';
+            } else {
+                passwordInput.type = 'password';
+                this.textContent = '👁️';
+            }
+        });
+    });
+}
+
+// Call the function when the DOM is loaded
+document.addEventListener('DOMContentLoaded', togglePasswordVisibility);
+    </script>
+
+  
