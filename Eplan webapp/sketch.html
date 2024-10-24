@@ -1,0 +1,169 @@
+<html>
+<head>
+    <title>Sketch</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .header, .footer {
+            background-color: #004d40;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header {
+            background-color: #004d40;
+        }
+        .header .left, .header .right {
+            display: flex;
+            align-items: center;
+        }
+        .header .left i, .header .right i {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        .header .center {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .header .right {
+            font-size: 18px;
+        }
+        .header .right i {
+            margin-left: 20px;
+        }
+        .nav {
+            background-color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav a {
+            color: black;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 16px;
+        }
+        .nav .settings {
+            background-color: #00bfa5;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .content {
+            background-color: white;
+            height: calc(100vh - 200px);
+        }
+        .footer {
+            background-color: black;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer .icons {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+        }
+        .footer .icons i {
+            font-size: 24px;
+            margin: 0 20px;
+            cursor: pointer;
+        }
+        .footer .links {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            margin-top: 10px;
+        }
+        .footer .links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 16px;
+        }
+        .footer .terms {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <div class="links">
+            <a href="home.html">Home/Schedule</a>
+            <a href="note.html">Note</a>
+            <a href="to do list.html">To Do List</a>
+            <a href="connect.html">Connect</a>
+        </div>
+        <div class="settings" onclick="openSettings()">Settings</div>
+    </div>
+    <div class="header">
+        <div class="left">
+            <i class="fas fa-times" onclick="closeSketch()"></i>
+            <i class="fas fa-undo" onclick="undoAction()"></i>
+            <i class="fas fa-redo" onclick="redoAction()"></i>
+        </div>
+        <div class="center">Sketch</div>
+        <div class="right">
+            <div>Done</div>
+            <i class="fas fa-lightbulb"></i>
+            <i class="fas fa-ellipsis-h"></i>
+        </div>
+    </div>
+    <div class="content"></div>
+    <div class="footer">
+        <div class="icons">
+            <i class="fas fa-pencil-alt" onclick="selectTool('pencil')"></i>
+            <i class="fas fa-pen" onclick="selectTool('pen')"></i>
+            <i class="fas fa-highlighter" onclick="selectTool('highlighter')"></i>
+            <i class="fas fa-eraser" onclick="selectTool('eraser')"></i>
+        </div>
+        <div class="links">
+            <a href="home.html">HOME</a>
+            <a href="home.html">Schedule</a>
+            <a href="note.html">Note</a>
+            <a href="to do list.html">To Do List</a>
+            <a href="connect.html">Connect</a>
+            <a href="settings.html">Settings</a>
+        </div>
+        <div class="terms">Terms & Condition</div>
+    </div>
+
+    <script>
+        function closeSketch() {
+            alert("Closing sketch...");
+            // Add logic to close the sketch
+        }
+
+        function undoAction() {
+            alert("Undo action...");
+            // Add logic to undo the last action
+        }
+
+        function redoAction() {
+            alert("Redo action...");
+            // Add logic to redo the last undone action
+        }
+
+        function openSettings() {
+            alert("Opening settings...");
+            // Add logic to open settings
+        }
+
+        function selectTool(tool) {
+            alert("Selected tool: " + tool);
+            // Add logic to select the tool
+        }
+    </script>
+</body>
+</html>

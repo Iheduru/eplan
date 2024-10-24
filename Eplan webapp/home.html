@@ -1,0 +1,812 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedules</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #2d3748;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 24px;
+        }
+        header nav a {
+            color: #4a5568;
+            margin-right: 16px;
+            text-decoration: none;
+        }
+        header nav a:hover {
+            color: #2d3748;
+        }
+        header button {
+            background-color: #38a169;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        main {
+            background-color: white;
+        }
+        main section.relative {
+            position: relative;
+        }
+        main section.relative img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        main section.relative h1 {
+            position:absolute;
+            top: 50%;
+            left: 20%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 2.5rem;
+            font-weight: bold;
+            justify-content: left;
+            display: flex;
+            text-shadow: #2d3748;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+        main .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 32px 24px;
+        }
+        .timezones {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+        .timezones div {
+            background-color: #38a169;
+            color: white;
+            padding: 1px; 
+            border-radius: 6px;
+            margin-right: 2px;
+        }
+        .timezones div.bg-gray-200 {
+            background-color: #edf2f7;
+            color: #2d3748;
+        }
+        .timezones button {
+            background-color: #edf2f7;
+            color: #2d3748;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        } 
+        /*CFI99*/
+        .search-bar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.search-bar input {
+    flex-grow: 1;
+    padding: 8px 16px;
+    border: 1px solid #e2e8f0;
+    border-radius: 30px 0 0 30px;
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar button {
+    background-color: #38a169;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 0 30px 30px 0;
+    cursor: pointer;
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar button:hover {
+    background-color: #2f855a;
+}
+/* Add this to your existing CSS */
+.search-bar input:focus {
+    outline: 2px solid #38a169;
+    box-shadow: 0 0 5px rgba(56, 161, 105, 0.3);
+}
+
+/* Optional: Add a "no results" message */
+.no-results {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+    display: none;
+}
+
+        .section-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+        .section-title h2 {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.cards .card {
+    background-color: #38a169;
+    color: white;
+    padding: 16px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+.card button{
+    background: none;
+    border: none;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .cards {
+        grid-template-columns: 1fr;
+    }
+}
+        .cards .card .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .cards .card .card-header i {
+            cursor: pointer;
+        }
+        .cards .card .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 16px;
+        }
+        .cards .card .card-footer img {
+            border-radius: 50%;
+        }
+        .add-button {
+            display: flex;
+            justify-content: center;
+        }
+        .add-button button {
+            background-color: #38a169;
+            color: white;
+            padding: 16px;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        footer {
+            background-color: black;
+            color: white;
+            padding: 24px;
+        }
+        footer .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        footer nav a {
+            color: white;
+            margin-right: 16px;
+            text-decoration: none;
+        }
+        footer nav a:hover {
+            text-decoration: underline;
+
+        }
+    
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.4);
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 500px;
+    }
+
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    #scheduleForm {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        #scheduleForm label {
+            font-weight: bold;
+        }
+
+        #scheduleForm input,
+        #scheduleForm textarea {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        #scheduleForm button {
+            background-color: #38a169;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #scheduleForm button:hover {
+            background-color: #2f855a;
+        }
+
+        #deleteSchedule {
+            background-color: #e53e3e !important;
+        }
+
+        #deleteSchedule:hover {
+            background-color: #c53030 !important;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="home.html">Home/Schedule</a>
+                <a href="note.html">Note</a>
+                <a href="to do list.html">To Do List</a>
+                <a href="connect.html">Connect</a>
+            </nav>
+            <a href="settings.html"><button>Settings</button></a>
+        </div>
+    </header>
+    <main>
+        <section class="relative">
+            <img src="./images/desk.png" alt="Desk workspace background image">
+            <h1>Schedules</h1>
+        </section>
+        <section class="container">
+          <!-- Modified timezone div -->
+        <div class="timezones">
+            <div data-timezone="Texas"></div>
+            <div data-timezone="Madrid" class="bg-gray-200"></div>
+            <div data-timezone="Monaco" class="bg-gray-200"></div>
+            <div data-timezone="London" class="bg-gray-200"></div>
+            <button><i class="fas fa-times"></i></button>
+        </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search schedules..." id="scheduleSearch">
+                <button onclick="searchSchedules()"><i class="fas fa-search"></i> Search</button>
+            </div>
+
+            <div class="section-title">
+                <h2>Weds</h2>
+                <h2>Today</h2>
+            </div>
+            <div class="cards">
+                <div class="card">
+                    <div class="card-header">
+                        <span>8:49PM - 10:00PM</span>
+                        <button><i class="fas fa-pen"></i></button>
+                    </div>
+                    <h3>Strategic Sales Summit</h3>
+                    <p>Empowering Growth through Lead Generation and Business Development</p>
+                    <div class="card-footer">
+                        <span>In 2 days</span>
+                        <img src="images/pf (10).jpg" alt="Profile image of a person" width="40" height="40">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span>8:49PM - 10:00PM</span>
+                        <button><i class="fas fa-pen"></i></button>
+                    </div>
+                    <h3>Strategic Sales Summit</h3>
+                    <p>Empowering Growth through Lead Generation and Business Development</p>
+                    <div class="card-footer">
+                        <span>In 2 days</span>
+                        <img src="images/pf (8).jpg" alt="Profile image of a person" width="40" height="40">
+                    </div>
+                </div>
+            </div>
+            <h2 class="section-title">Upcoming</h2>
+            <div class="cards">
+                <div class="card">
+                    <div class="card-header">
+                        <span>8:49PM - 10:00PM</span>
+                        <button><i class="fas fa-pen"></i></button>
+                    </div>
+                    <h3>Strategic Sales Summit</h3>
+                    <p>Empowering Growth through Lead Generation and Business Development</p>
+                    <div class="card-footer">
+                        <span>In 2 days</span>
+                        <img src="images/pf (11).jpg" alt="Profile image of a person" width="40" height="40">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span>8:49PM - 10:00PM</span>
+                        <button><i class="fas fa-pen"></i></button>
+                    </div>
+                    <h3>Strategic Sales Summit</h3>
+                    <p>Empowering Growth through Lead Generation and Business Development</p>
+                    <div class="card-footer">
+                        <span>In 2 days</span>
+                        <img src="images/pf (5).jpg" alt="Profile image of a person" width="40" height="40">
+                    </div>
+                </div>
+            </div>
+            <div class="add-button">
+                <button onclick="openScheduleForm()"><i class="fas fa-plus"></i></button>
+            </div>
+            
+            <!-- Add this modal form for creating new schedules -->
+            <div id="scheduleModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeScheduleForm()">&times;</span>
+                    <h2>Create New Schedule</h2>
+                    <form id="scheduleForm">
+                        <label for="title">Title:</label>
+                        <input type="text" id="title" name="title" required>
+                        
+                        <label for="description">Description:</label>
+                        <textarea id="description" name="description"></textarea>
+                        
+                        <label for="date">Date:</label>
+                        <input type="date" id="date" name="date" required>
+                        
+                        <label for="startTime">Start Time:</label>
+                        <input type="time" id="startTime" name="startTime" required>
+                        
+                        <label for="endTime">End Time:</label>
+                        <input type="time" id="endTime" name="endTime" required>
+                        
+                        <button type="submit">Create Schedule</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="container">
+            <nav>
+                <a href="home.html">HOME</a>
+                <a href="note.html">Note</a>
+                <a href="to do list.html">To Do List</a>
+                <a href="connect.html">Connect</a>
+                <a href="settings.html">Settings</a>
+            </nav>
+            <span>Terms & Condition</span>
+        </div>
+    </footer>
+    <script>
+        function addEditListeners() {
+            document.querySelectorAll('.card .fa-pen').forEach(icon => {
+                icon.addEventListener('click', function() {
+                    const card = this.closest('.card');
+                    openScheduleForm(true, card);
+                });
+            });
+        }
+        
+        document.addEventListener('DOMContentLoaded', addEditListeners);
+    
+        let currentEditingCard = null;
+    
+        function openScheduleForm(editMode = false, cardElement = null) {
+            const modal = document.getElementById('scheduleModal');
+            const form = document.getElementById('scheduleForm');
+            const submitButton = form.querySelector('button[type="submit"]');
+            let deleteButton = document.getElementById('deleteSchedule');
+    
+            if (!deleteButton) {
+                deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Delete Schedule';
+                deleteButton.type = 'button';
+                deleteButton.id = 'deleteSchedule';
+                deleteButton.style.marginLeft = '10px';
+                deleteButton.style.backgroundColor = 'red';
+                deleteButton.style.color = 'white';
+                submitButton.parentNode.insertBefore(deleteButton, submitButton.nextSibling);
+    
+                deleteButton.addEventListener('click', function() {
+                    if (currentEditingCard) {
+                        currentEditingCard.remove();
+                        closeScheduleForm();
+                    }
+                });
+            }
+    
+            if (editMode && cardElement) {
+                currentEditingCard = cardElement;
+                form.elements['title'].value = cardElement.querySelector('h3').textContent;
+                form.elements['description'].value = cardElement.querySelector('p').textContent;
+                const [startTime, endTime] = cardElement.querySelector('.card-header span').textContent.split(' - ');
+                form.elements['startTime'].value = startTime;
+                form.elements['endTime'].value = endTime;
+                const date = new Date(cardElement.querySelector('.card-footer span').textContent);
+                form.elements['date'].value = date.toISOString().split('T')[0];
+    
+                submitButton.textContent = 'Update Schedule';
+                deleteButton.style.display = 'inline-block';
+            } else {
+                currentEditingCard = null;
+                submitButton.textContent = 'Create Schedule';
+                deleteButton.style.display = 'none';
+            }
+    
+            modal.style.display = 'block';
+        }
+    
+        function closeScheduleForm() {
+            document.getElementById('scheduleModal').style.display = 'none';
+            document.getElementById('scheduleForm').reset();
+            currentEditingCard = null;
+        }
+    
+        document.getElementById('scheduleForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const title = this.elements['title'].value;
+            const description = this.elements['description'].value;
+            const date = this.elements['date'].value;
+            const startTime = this.elements['startTime'].value;
+            const endTime = this.elements['endTime'].value;
+    
+            if (currentEditingCard) {
+                updateScheduleCard(currentEditingCard, title, description, date, startTime, endTime);
+            } else {
+                createScheduleCard(title, description, date, startTime, endTime);
+            }
+    
+            createReminder(title, date, startTime);
+            closeScheduleForm();
+        });
+    
+        function createScheduleCard(title, description, date, startTime, endTime) {
+            const card = document.createElement('div');
+            card.className = 'card';
+            updateCardContent(card, title, description, date, startTime, endTime);
+            
+            const todaySection = document.querySelector('.cards');
+            if (todaySection) {
+                todaySection.appendChild(card);
+                addEditListeners();
+            } else {
+                console.error('Could not find .cards element');
+            }
+        }
+    
+        function updateScheduleCard(card, title, description, date, startTime, endTime) {
+            updateCardContent(card, title, description, date, startTime, endTime);
+        }
+    
+        function updateCardContent(card, title, description, date, startTime, endTime) {
+            const dateObj = new Date(date);
+            const formattedDate = dateObj.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+    
+            card.innerHTML = `
+                <div class="card-header">
+                    <span>${startTime} - ${endTime}</span>
+                    <i class="fas fa-pen"></i>
+                </div>
+                <h3>${title}</h3>
+                <p>${description}</p>
+                <div class="card-footer">
+                    <span>${formattedDate}</span>
+                    <img src="https://placehold.co/40" alt="Profile image" width="40" height="40">
+                </div>
+            `;
+            addEditListeners();
+        }
+    
+        function createReminder(title, date, time) {
+            const reminderDate = new Date(date + 'T' + time);
+            const now = new Date();
+            const timeDiff = reminderDate.getTime() - now.getTime();
+    
+            if (timeDiff > 0) {
+                setTimeout(() => {
+                    alert(`Reminder: ${title} is scheduled now!`);
+                }, timeDiff);
+            }
+        }
+    
+        function searchSchedules() {
+            const searchInput = document.querySelector('.search-bar input');
+            const searchTerm = searchInput.value.toLowerCase();
+            const cards = document.querySelectorAll('.card');
+            let hasResults = false;
+    
+            cards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const description = card.querySelector('p').textContent.toLowerCase();
+                const time = card.querySelector('.card-header span').textContent.toLowerCase();
+                const date = card.querySelector('.card-footer span').textContent.toLowerCase();
+    
+                if (title.includes(searchTerm) || 
+                    description.includes(searchTerm) || 
+                    time.includes(searchTerm) || 
+                    date.includes(searchTerm)) {
+                    card.style.display = 'block';
+                    hasResults = true;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+    
+            handleSearchResults(hasResults, searchTerm, cards);
+        }
+    
+        function handleSearchResults(hasResults, searchTerm, cards) {
+            const noResultsMessage = document.querySelector('.no-results') || createNoResultsMessage();
+            noResultsMessage.style.display = hasResults || searchTerm === '' ? 'none' : 'block';
+    
+            if (searchTerm !== '') {
+                cards.forEach(card => {
+                    if (card.style.display !== 'none') {
+                        highlightText(card, searchTerm);
+                    }
+                });
+            }
+        }
+    
+        function createNoResultsMessage() {
+            const message = document.createElement('div');
+            message.className = 'no-results';
+            message.textContent = 'No schedules found matching your search.';
+            const searchBar = document.querySelector('.search-bar');
+            searchBar.parentNode.insertBefore(message, searchBar.nextSibling);
+            return message;
+        }
+    
+        function highlightText(element, searchTerm) {
+            const highlights = element.querySelectorAll('mark');
+            highlights.forEach(highlight => {
+                const parent = highlight.parentNode;
+                parent.replaceChild(document.createTextNode(highlight.textContent), highlight);
+            });
+    
+            const highlightMatches = (node) => {
+                if (node.nodeType === Node.TEXT_NODE) {
+                    const text = node.nodeValue;
+                    const regex = new RegExp(searchTerm, 'gi');
+                    const newText = text.replace(regex, match => `<mark>${match}</mark>`);
+                    if (newText !== text) {
+                        const newNode = document.createElement('span');
+                        newNode.innerHTML = newText;
+                        node.parentNode.replaceChild(newNode, node);
+                    }
+                } else if (node.nodeType === Node.ELEMENT_NODE) {
+                    node.childNodes.forEach(child => highlightMatches(child));
+                }
+            };
+    
+            highlightMatches(element);
+        }
+    
+        const style = document.createElement('style');
+        style.textContent = `
+            .no-results {
+                text-align: center;
+                padding: 20px;
+                color: #666;
+                display: none;
+                background-color: #f8f9fa;
+                border-radius: 8px;
+                margin: 10px 0;
+            }
+            mark {
+                background-color: #ffd700;
+                padding: 2px;
+                border-radius: 2px;
+            }
+            .search-bar input::placeholder {
+                color: #999;
+            }
+            .search-bar input:focus::placeholder {
+                opacity: 0.7;
+            }
+        `;
+        document.head.appendChild(style);
+    
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.querySelector('.search-bar input');
+            const searchButton = document.querySelector('.search-bar button');
+    
+            searchButton.addEventListener('click', searchSchedules);
+            searchInput.addEventListener('keyup', searchSchedules);
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    searchSchedules();
+                }
+            });
+        });
+        
+        function updateTimezones() {
+    // Define all time zones with their respective configurations
+    const timezones = {
+        'Texas': {
+            timeZone: 'America/Chicago',
+            flag: '🇺🇸'
+        },
+        'Madrid': {
+            timeZone: 'Europe/Madrid',
+            flag: '🇪🇸'
+        },
+        'Monaco': {
+            timeZone: 'Europe/Monaco',
+            flag: '🇲🇨'
+        },
+        'Tokyo': {
+            timeZone: 'Asia/Tokyo',
+            flag: '🇯🇵'
+        },
+        'London': {
+            timeZone: 'Europe/London',
+            flag: '🇬🇧'
+        },
+        'Sydney': {
+            timeZone: 'Australia/Sydney',
+            flag: '🇦🇺'
+        }
+    };
+
+    // Update each timezone element
+    Object.entries(timezones).forEach(([city, config]) => {
+        try {
+            const currentTime = new Date();
+            const timeString = currentTime.toLocaleString('en-US', {
+                timeZone: config.timeZone,
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: true,
+                timeZoneName: 'short'
+            });
+
+            const dateString = currentTime.toLocaleDateString('en-US', {
+                timeZone: config.timeZone,
+                weekday: 'short',
+                month: 'short',
+                day: 'numeric'
+            });
+
+            const element = document.querySelector(`[data-timezone="${city}"]`);
+            if (element) {
+                element.innerHTML = `
+                    <div class="timezone-content">
+                        <div class="city-name">${config.flag} ${city}</div>
+                        <div class="time">${timeString}</div>
+                        <div class="date">${dateString}</div>
+                    </div>
+                `;
+            }
+        } catch (error) {
+            console.error(`Error updating timezone for ${city}:`, error);
+        }
+    });
+}
+
+// Add the corresponding CSS
+const timezonesStyle = document.createElement('style');
+timezonesStyle.textContent = `
+    .timezones {
+    display: flex;
+    gap: 0.2rem;  /* Even smaller gap */
+    padding: 0.2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+[data-timezone] {
+    background-color: #f8f9fa;
+    border-radius: 3px;  /* Smaller border radius */
+    padding: 0.2rem;     /* Smaller padding */
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease-in-out;
+    min-width: 70px;     /* Reduced minimum width */
+    max-width: 80px;     /* Reduced maximum width */
+}
+
+.timezone-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.1rem;    /* Smaller gap between elements */
+}
+
+.city-name {
+    font-weight: bold;
+    font-size: 0.6rem;   /* Smaller font size */
+    white-space: nowrap;
+}
+
+.time {
+    font-size: 0.7rem;   /* Smaller font size */
+    color: #38a169;
+}
+
+.date {
+    font-size: 0.5rem;   /* Smaller font size */
+    color: #666;
+}
+
+/* Make the flag emoji smaller */
+.city-name span {
+    font-size: 0.5rem;
+}
+`;
+
+document.head.appendChild(timezonesStyle);
+
+// Update times more frequently (every second)
+setInterval(updateTimezones, 1000);
+
+// Initial update
+document.addEventListener('DOMContentLoaded', () => {
+    updateTimezones();
+});
+
+// Add timezone selector functionality
+function addTimeZoneSelector() {
+    const container = document.querySelector('.timezones');
+    const addButton = document.createElement('button');
+    addButton.className = 'add-timezone-btn';
+    addButton.innerHTML = '+ Add Timezone';
+}
+    </script>
+</body>
+</html>
+
