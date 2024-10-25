@@ -1,0 +1,268 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .cards {
+        grid-template-columns: 1fr;
+    }
+}
+.container {
+    display: flex;
+    width: 800px;
+    height: 600px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    animation: slide-up 1s ease-out;
+    animation-fill-mode: forwards;
+    
+}
+.text-container {
+    position: absolute;
+    top: 50%;
+    right: -7;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    /*gap: 20px;*/
+    
+}
+.text-container button {
+    background: none;
+    border: 2px solid transparent;
+    color: white;
+    cursor: pointer;
+    font-size: 1.2rem;
+    border-radius: 20px;
+    transition: all 0.9s ease;
+}
+
+.text-container h1 {
+    font-size: 1.5rem;
+    color: #050505;
+    border-color: #f0f0f0;
+    margin: 0;
+    padding: 5px 0px;
+    border-bottom: 2px solid transparent;
+}
+
+.text-container .active {
+    background-color: white;
+    color: #0c0c0c;
+    border-radius: 40px 0px 0px 40px ;
+    border-left: 20px;
+    padding: 10px 5px 10px 10px;
+    transition: 0.3s ease-in-out;
+    transform: rotate(2,4,5,7);
+    margin-left: 20px;
+    justify-content: end;
+}
+
+.text-container button:hover {
+    color: #0f0f0f;
+}
+.container {
+    display: flex;
+    width: 800px;
+    height: 600px;
+    box-shadow: 0 0 10px rgba(1, 4, 8, 0.9);
+}
+.left-panel, .right-panel {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    
+}
+.left-panel {
+    background-image: url(images/Sign.png);
+            background-color: #4CAF50;
+            color: white;
+            flex-direction: column;
+            padding: 0%;
+}
+.right-panel {
+    background-color: white;
+    flex-direction: column;
+    padding: 0%;
+    align-items: center;
+}
+.left-panel h1 {
+    font-size: 2rem;
+    margin: 0;
+}
+.left-panel p {
+    font-size: 1.2rem;
+}
+.form-container {
+    width: 80%;
+    
+}
+.form-container h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+.form-container p {
+    color: #666;
+    margin-bottom: 20px;
+}
+.form-container label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+.form-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    
+}
+.form-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #38a169;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.form-container button:hover {
+    background-color: #2f855a;
+    box-shadow: 1px 2px 10px rgba(1, 2, 3, 0.9);
+    transition: .4s ease-in-out;
+}
+.form-container .toggle-link {
+    color: #38a169;
+    cursor: pointer;
+}
+
+.form-container .toggle-link:hover {
+    text-decoration: underline;
+}
+.hidden {
+    display: none;
+}
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.checkbox-label input[type="checkbox"] {
+    margin-right: 10px;
+    width: auto;
+}
+
+.checkbox-label span {
+    font-size: 14px;
+    font-weight: bold;
+}
+.checkbox-label span {
+    font-size: 14px;
+    color: #666;
+}
+.form-container input:not([type="checkbox"]) {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.password-container {
+    position: relative;
+    width: 100%;
+}
+button.toggle-password{
+    background: none;
+    justify-items: left;
+}
+
+.password-container input {
+    width: 100%;
+    padding-right: 40px; /* Make room for the button */
+}
+
+.toggle-password {
+    position: right;
+    display: flex;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+.toggle-password :hover{
+    background: transparent;
+}
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 1.5rem 0;
+}
+.right-panel .divider::before,
+.right-panel .divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #ddd;
+}
+.right-panel .divider::before {
+    margin-right: 0.5em;
+}
+.right-panel .divider::after {
+    margin-left: 0.5em;
+}
+.be{
+    text-align: center;
+}
+.space{
+    text-align: center;
+}
+@keyframes slide-up {
+    from {
+        opacity: 0;
+        transform: translate(0, 50px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+}
+.fade {
+    animation: fade-in 0.9s ease-in-out forwards;
+}
+
+.fade-out {
+    animation: fade-out 1s ease-in-out forwards; /* 1 second for fade-out */
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-out {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}

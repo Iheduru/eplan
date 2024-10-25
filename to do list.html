@@ -1,0 +1,247 @@
+<html>
+<head>
+    <title>To Do List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .header {
+            background-color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+        }
+        .header img {
+            height: 50px;
+        } 
+        
+        .header nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        .header .settings {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .banner {
+            background-image: url('images/desk.png');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: left;
+            padding: 100px 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+        .banner h1 {
+            margin: 0;
+            font-size: 48px;
+        }
+        .content {
+            padding: 20px;
+        }
+        .task-filter {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            
+        }
+        .task-filter select, .task-filter input {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .task-filter input {
+            flex: 1;
+            margin: 0 10px;
+            box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .task-filter button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .task-list {
+            background-color: #e9f5ee;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .task-list .day {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .task-list .day.active {
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .task-list .task {
+            background-color: #28a745;
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .task-list .task .details {
+            display: flex;
+            align-items: center;
+        }
+        .task-list .task .details .checkbox {
+            width: 20px;
+            height: 20px;
+            border: 2px solid white;
+            border-radius: 3px;
+            margin-right: 10px;
+        }
+        .task-list .task .details .info {
+            display: flex;
+            flex-direction: column;
+        }
+        .task-list .task .details .info span {
+            font-size: 14px;
+        }
+        .task-list .task .repeat {
+            font-size: 14px;
+        }
+        .add-task {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .add-task input {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-bottom: 1px solid #ddd;
+        }
+        .add-task button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            font-size: 24px;
+        }
+        .footer {
+            background-color: #000;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .footer nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+        }
+        .footer .terms {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav>
+            <a href="home.html">Home/Schedule</a>
+                <a href="note.html">Note</a>
+                <a href="to do list.html">To Do List</a>
+                <a href="connect.html">Connect</a>
+        </nav>
+        <a href="settings.html" class="settings">Settings</a>
+    </header>
+   
+    <section class="banner">
+        
+        <h1>To Do List</h1>
+    </section>
+    <section class="content">
+        <div class="task-filter">
+            <select>
+                <option>All Task</option>
+            </select>
+            <input type="text" placeholder="Search">
+            <button><i class="fas fa-search"></i> Search</button>
+            <button><i class="fas fa-ellipsis-v"></i></button>
+        </div>
+        <div class="task-list">
+            <div class="day">Sun 15</div>
+            <div class="day active">Mon 16</div>
+            <div class="day">Tue 17</div>
+            <div class="day">Wed 18</div>
+            <div class="day">Thur 19</div>
+            <div class="day">Fri 20</div>
+            <div class="day">Sat 21</div>
+            <div class="task">
+                <div class="details">
+                    <div class="checkbox"></div>
+                    <div class="info">
+                        <strong>Start reading a book</strong>
+                        <span>10:00 am</span>
+                        <span>Personal</span>
+                    </div>
+                </div>
+                <div class="repeat">Repeat</div>
+            </div>
+            <div class="task">
+                <div class="details">
+                    <div class="checkbox"></div>
+                    <div class="info">
+                        <strong>Start reading a book</strong>
+                        <span>10:00 am</span>
+                        <span>Personal</span>
+                    </div>
+                </div>
+                <div class="repeat">Repeat</div>
+            </div>
+            <div class="task">
+                <div class="details">
+                    <div class="checkbox"></div>
+                    <div class="info">
+                        <strong>Start reading a book</strong>
+                        <span>10:00 am</span>
+                        <span>Personal</span>
+                    </div>
+                </div>
+                <div class="repeat">Repeat</div>
+            </div>
+        </div>
+        <div class="add-task">
+            <input type="text" placeholder="Enter Quick Task Here">
+            <button><i class="fas fa-microphone"></i></button>
+        </div>
+    </section>
+    <footer class="footer">
+        <nav>
+            <a href="home.html">HOME</a>
+                <a href="note.html">Note</a>
+                <a href="to do list.html">To Do List</a>
+                <a href="connect.html">Connect</a>
+                <a href="settings.html">Settings</a>
+        </nav>
+        <div class="terms">Terms & Condition</div>
+    </footer>
+</body>
+</html>
