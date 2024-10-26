@@ -11,8 +11,19 @@
             background-color: #2d3748;
             margin: 0;
             padding: 0;
-            transition: .5s ease-in;
+            animation: slide-up 1s ease-out;
+            animation-fill-mode: forwards;
         }
+        @keyframes slide-up {
+    from {
+        opacity: 0;
+        transform: translate(0, 50px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+}
         header {
             background-color: white;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -165,8 +176,23 @@
 .card button{
     background: none;
     border: none;
+    transition: transform 0.6s ease; /* Smooth transition for the transform property */
 }
 
+/* Keyframe animation for spinning effect */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Apply animation on hover */
+.card button:hover {
+    animation: spin 0.6s forwards; /* Trigger spin animation on hover */
+}
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
     .cards {
@@ -203,7 +229,23 @@
             border-radius: 50%;
             font-size: 1.5rem;
             cursor: pointer;
-        }
+            transition: transform 0.6s ease; /* Smooth transition for the transform property */
+}
+
+/* Keyframe animation for spinning effect */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Apply animation on hover */
+.add-button:hover {
+    animation: spin 0.6s forwards; /* Trigger spin animation on hover */
+}
         footer {
             background-color: black;
             color: white;
@@ -680,27 +722,21 @@
     const timezones = {
         'Texas': {
             timeZone: 'America/Chicago',
-            flag: '🇺🇸'
         },
         'Madrid': {
             timeZone: 'Europe/Madrid',
-            flag: '🇪🇸'
         },
         'Monaco': {
             timeZone: 'Europe/Monaco',
-            flag: '🇲🇨'
         },
         'Tokyo': {
             timeZone: 'Asia/Tokyo',
-            flag: '🇯🇵'
         },
         'London': {
             timeZone: 'Europe/London',
-            flag: '🇬🇧'
         },
         'Sydney': {
             timeZone: 'Australia/Sydney',
-            flag: '🇦🇺'
         }
     };
 
@@ -714,7 +750,6 @@
                 minute: '2-digit',
                 second: '2-digit',
                 hour12: true,
-                timeZoneName: 'short'
             });
 
             const dateString = currentTime.toLocaleDateString('en-US', {
@@ -728,9 +763,8 @@
             if (element) {
                 element.innerHTML = `
                     <div class="timezone-content">
-                        <div class="city-name">${config.flag} ${city}</div>
+                        <div class="city-name"> ${city}</div>
                         <div class="time">${timeString}</div>
-                        <div class="date">${dateString}</div>
                     </div>
                 `;
             }
@@ -745,7 +779,7 @@ const timezonesStyle = document.createElement('style');
 timezonesStyle.textContent = `
     .timezones {
     display: flex;
-    gap: 0.2rem;  /* Even smaller gap */
+    gap: 0.7rem;  /* Even smaller gap */
     padding: 0.2rem;
     justify-content: center;
     flex-wrap: wrap;

@@ -1,6 +1,10 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To Do List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
@@ -9,32 +13,65 @@
             margin: 0;
             padding: 0;
             background-color: #f5f5f5;
+            animation: slide-up 1s ease-out;
+            animation-fill-mode: forwards;
         }
-        .header {
+        @keyframes slide-up {
+            from {
+                opacity: 0;
+                transform: translate(0, 50px);
+            }
+            to {
+                opacity: 1;
+                transform: translate(0, 0);
+            }
+        }
+        .header, .footer {
+            display: flex;
             background-color: white;
             padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             border-bottom: 1px solid #ddd;
         }
         .header img {
             height: 50px;
-        } 
-        
-        .header nav a {
-            margin: 0 15px;
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
         }
-        .header .settings {
-            background-color: #28a745;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-        }
+        .header nav a, .footer nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #000000;
+    font-weight: 500;
+    transition: color 0.3s; 
+}
+
+.header nav a:hover, .footer nav a:hover {
+    color: #2d3748;
+}
+
+.header {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+.header .settings {
+    background: none;    
+    background-color: #047857;
+    color: white;
+    padding: 0.5rem 1rem; /* Added horizontal padding */
+    border: none;
+    border-radius: 0.9rem;
+    cursor: pointer; 
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.header .settings:hover {
+    background-color: #045842; 
+}
+
+.header nav a:focus, .footer nav a:focus, .header .settings:focus {
+    outline: 2px solid #047857; /*  outline for focus visibility */
+}
+
         .banner {
             background-image: url('images/desk.png');
             background-size: cover;
@@ -42,16 +79,12 @@
             color: white;
             text-align: left;
             padding: 100px 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
-        }
-        .banner h1 {
-            margin: 0;
-            font-size: 48px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
         }
         .content {
             padding: 20px;
         }
-        .task-filter {
+            .task-filter {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -61,72 +94,74 @@
         .task-filter select, .task-filter input {
             padding: 10px;
             border: 1px solid #ddd;
-            border-radius: 5px;
+            border-radius: 10px;
         }
         .task-filter input {
-            flex: 1;
+            flex: 0.93;
             margin: 0 10px;
             box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 40px;
         }
         .task-filter button {
             background-color: #28a745;
             color: white;
             border: none;
             padding: 10px 20px;
-            border-radius: 5px;
+            border-radius: 15px;
             box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1);
         }
-        .task-list {
-            background-color: #e9f5ee;
-            padding: 20px;
-            border-radius: 10px;
-        }
-        .task-list .day {
+        .task-container {
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #f7fcf8;
+    opacity: 0; /* Start invisible */
+    transform: translateY(10px); /* Start slightly lower */
+    transition: background-color 1s ease, border 10s ease, box-shadow 5s ease; /* Smooth transition for these properties */
+}
+
+/* Keyframe animation for fade-in effect */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(90px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Add a class to trigger the animation */
+.task-container.visible {
+    animation: fadeIn 0.5s forwards; /* Play animation when the class is added */
+    opacity: 1; /* Make visible */
+}
+
+/* Optional hover effect */
+.task-container:hover {
+    background-color: #e1f3e1; /* Lighten background on hover */
+    border: 1px solid #28a745; /* Change border color on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow effect on hover */
+}
+
+        .task-card {
             display: flex;
+            align-items: center;
             justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        .task-list .day.active {
-            background-color: #28a745;
+            padding: 1rem;
+            background-color: #276745;
             color: white;
-            padding: 10px;
-            border-radius: 5px;
+            margin: 10px 0;
+            border-radius: 8px;
         }
-        .task-list .task {
-            background-color: #28a745;
-            color: white;
-            padding: 20px;
-            border-radius: 5px;
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .task-list .task .details {
-            display: flex;
-            align-items: center;
-        }
-        .task-list .task .details .checkbox {
-            width: 20px;
-            height: 20px;
-            border: 2px solid white;
-            border-radius: 3px;
-            margin-right: 10px;
-        }
-        .task-list .task .details .info {
-            display: flex;
-            flex-direction: column;
-        }
-        .task-list .task .details .info span {
-            font-size: 14px;
-        }
-        .task-list .task .repeat {
-            font-size: 14px;
+        
+        .hidden {
+            display: none;
         }
         .add-task {
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end;
             align-items: center;
             margin-top: 20px;
         }
@@ -135,26 +170,39 @@
             padding: 10px;
             border: none;
             border-bottom: 1px solid #ddd;
+            margin: 5px;
+            background: none;
         }
         .add-task button {
-            background-color: #28a745;
-            color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 50%;
-            font-size: 24px;
-        }
+    background: none;
+    color: rgb(2, 2, 2);
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    transform: none;
+    text-shadow: 4px 4px 6px rgba(1, 2, 0, 0.1);
+    transition: transform 0.6s ease; /* Smooth transition for the transform property */
+}
+
+/* Keyframe animation for spinning effect */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Apply animation on hover */
+.add-task button:hover {
+    animation: spin 0.6s forwards; /* Trigger spin animation on hover */
+}
+
         .footer {
-            background-color: #000;
-            color: white;
-            padding: 20px;
             text-align: center;
-        }
-        .footer nav a {
-            margin: 0 15px;
-            text-decoration: none;
-            color: white;
-            font-weight: 500;
         }
         .footer .terms {
             margin-top: 10px;
@@ -166,82 +214,199 @@
     <header class="header">
         <nav>
             <a href="home.html">Home/Schedule</a>
-                <a href="note.html">Note</a>
-                <a href="to do list.html">To Do List</a>
-                <a href="connect.html">Connect</a>
+            <a href="note.html">Note</a>
+            <a href="to do list.html">To Do List</a>
+            <a href="connect.html">Connect</a>
         </nav>
         <a href="settings.html" class="settings">Settings</a>
     </header>
-   
+
     <section class="banner">
-        
         <h1>To Do List</h1>
     </section>
+
     <section class="content">
         <div class="task-filter">
             <select>
-                <option>All Task</option>
+                <option>All Tasks</option>
             </select>
             <input type="text" placeholder="Search">
-            <button><i class="fas fa-search"></i> Search</button>
+             <button><i class="fas fa-search"></i> Search</button>
             <button><i class="fas fa-ellipsis-v"></i></button>
         </div>
-        <div class="task-list">
-            <div class="day">Sun 15</div>
-            <div class="day active">Mon 16</div>
-            <div class="day">Tue 17</div>
-            <div class="day">Wed 18</div>
-            <div class="day">Thur 19</div>
-            <div class="day">Fri 20</div>
-            <div class="day">Sat 21</div>
-            <div class="task">
-                <div class="details">
-                    <div class="checkbox"></div>
-                    <div class="info">
-                        <strong>Start reading a book</strong>
-                        <span>10:00 am</span>
-                        <span>Personal</span>
-                    </div>
-                </div>
-                <div class="repeat">Repeat</div>
-            </div>
-            <div class="task">
-                <div class="details">
-                    <div class="checkbox"></div>
-                    <div class="info">
-                        <strong>Start reading a book</strong>
-                        <span>10:00 am</span>
-                        <span>Personal</span>
-                    </div>
-                </div>
-                <div class="repeat">Repeat</div>
-            </div>
-            <div class="task">
-                <div class="details">
-                    <div class="checkbox"></div>
-                    <div class="info">
-                        <strong>Start reading a book</strong>
-                        <span>10:00 am</span>
-                        <span>Personal</span>
-                    </div>
-                </div>
-                <div class="repeat">Repeat</div>
-            </div>
+
+        <!-- Date Picker -->
+        <div class="date-picker d-flex justify-content-around mt-4">
+            <button class="date-btn btn btn-light" data-date="2023-10-15">Sun 15</button>
+            <button class="date-btn btn btn-light" data-date="2023-10-16">Mon 16</button>
+            <button class="date-btn btn btn-light" data-date="2023-10-17">Tue 17</button>
+            <button class="date-btn btn btn-light" data-date="2023-10-18">Wed 18</button>
+            <button class="date-btn btn btn-light" data-date="2023-10-19">Thu 19</button>
+            <button class="date-btn btn btn-light" data-date="2023-10-20">Fri 20</button>
+            <button class="date-btn btn btn-light" data-date="2023-10-21">Sat 21</button>
         </div>
+
+        <!-- Task Cards -->
+        <div id="task-container" class="task-container mt-4"></div>
+
+        <div class="add-task">
+            <input type="text" id="task-input" class="hidden" placeholder="Task">
+            <input type="time" id="time-input" class="hidden">
+            <input type="text" id="type-input" class="hidden" placeholder="Type">
+            <button id="add-task-btn"><i class="fas fa-plus"></i></button>
+        </div>
+
         <div class="add-task">
             <input type="text" placeholder="Enter Quick Task Here">
             <button><i class="fas fa-microphone"></i></button>
         </div>
     </section>
+
     <footer class="footer">
         <nav>
             <a href="home.html">HOME</a>
-                <a href="note.html">Note</a>
-                <a href="to do list.html">To Do List</a>
-                <a href="connect.html">Connect</a>
-                <a href="settings.html">Settings</a>
+            <a href="note.html">Note</a>
+            <a href="to do list.html">To Do List</a>
+            <a href="connect.html">Connect</a>
+            <a href="settings.html">Settings</a>
         </nav>
-        <div class="terms">Terms & Condition</div>
+        <div class="terms">Terms & Conditions</div>
     </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Object to store tasks by date
+        const tasks = {
+            "2023-10-15": [
+                { title: "Complete project report", time: "10:00 am", type: "Work" }
+            ],
+            "2023-10-16": [
+                { title: "Start reading a book", time: "10:00 am", type: "Personal" },
+                { title: "Jogging", time: "6:30 am", type: "Health" }
+            ],
+            "2023-10-17": [
+                { title: "Grocery shopping", time: "4:00 pm", type: "Personal" }
+            ]
+        };
+
+        // Add event listener for the "add-task-btn"
+        document.getElementById("add-task-btn").addEventListener("click", function() {
+            const taskInput = document.getElementById("task-input");
+            const timeInput = document.getElementById("time-input");
+            const typeInput = document.getElementById("type-input");
+            const selectedDateElement = document.querySelector(".date-btn.active");
+
+            // Check if a date is selected
+            if (!selectedDateElement) {
+                alert("Please select a date.");
+                return; // Exit if no date is selected
+            }
+            
+            const selectedDate = selectedDateElement.getAttribute("data-date");
+
+            // If the input fields are hidden, show them and focus
+            if (taskInput.classList.contains("hidden")) {
+                taskInput.classList.remove("hidden");
+                timeInput.classList.remove("hidden");
+                typeInput.classList.remove("hidden");
+                taskInput.focus(); // Focus on the task input field
+            } else {
+                // If the input fields are visible, check if the task input is not empty
+                if (taskInput.value.trim()) {
+                    // Initialize the selected date's task list if it doesn't exist
+                    if (!tasks[selectedDate]) tasks[selectedDate] = [];
+
+                    // Create new task object
+                    const newTask = {
+                        title: taskInput.value.trim(),
+                        time: timeInput.value, // Time can be empty, handled later
+                        type: typeInput.value.trim()
+                    };
+
+                    tasks[selectedDate].push(newTask);
+
+                    // Schedule an alert if the task time is specified
+                    if (newTask.time) {
+                        const [hours, minutes] = newTask.time.split(':').map(Number);
+                        const taskTime = new Date(selectedDate); // Set date to the selected date
+                        taskTime.setHours(hours, minutes, 0, 0);
+
+                        const now = new Date();
+                        const timeDifference = taskTime - now;
+
+                        // If the task time is in the future, set a timeout
+                        if (timeDifference > 0) {
+                            setTimeout(() => {
+                                alert(`It's time to do your task: ${newTask.title}`);
+                            }, timeDifference);
+                        }
+                    }
+
+                    // Clear input fields
+                    taskInput.value = "";
+                    timeInput.value = "";
+                    typeInput.value = "";
+
+                    // Refresh the task display
+                    displayTasks(selectedDate);
+                }
+
+                // Hide the input fields again
+                taskInput.classList.add("hidden");
+                timeInput.classList.add("hidden");
+                typeInput.classList.add("hidden");
+            }
+        });
+
+        // Function to display tasks based on selected date
+        function displayTasks(date) {
+    const taskContainer = document.getElementById("task-container");
+    taskContainer.innerHTML = ""; // Clear existing tasks
+
+    // Make task container visible
+    taskContainer.classList.add("visible"); // Add the visible class to trigger animation
+
+    if (tasks[date]) {
+        tasks[date].forEach(task => {
+            const taskCard = document.createElement("div");
+            taskCard.className = "task-card d-flex justify-content-between align-items-center p-3 mb-3";
+            taskCard.style.backgroundColor = "#276745";
+            taskCard.style.color = "#ffffff";
+            taskCard.style.borderRadius = "8px";
+
+            taskCard.innerHTML = `
+                <div>
+                    <h5>${task.title}</h5>
+                    <p>${task.time} <br> ${task.type}</p>
+                </div>
+                <div class="task-action">Repeat</div>
+            `;
+
+            taskContainer.appendChild(taskCard);
+        });
+    } else {
+        taskContainer.innerHTML = "<p class='text-center'>No tasks for this date.</p>";
+    }
+}
+
+
+        // Event listeners for date buttons
+        document.querySelectorAll(".date-btn").forEach(button => {
+            button.addEventListener("click", () => {
+                const selectedDate = button.getAttribute("data-date");
+                
+                // Remove active state from all buttons and add to the selected one
+                document.querySelectorAll(".date-btn").forEach(btn => btn.classList.remove("active"));
+                button.classList.add("active");
+                
+                // Display tasks
+                displayTasks(selectedDate);
+            });
+        });
+
+        // Display tasks for the current date initially
+        displayTasks("2023-10-16"); // Default date to display
+    </script>
 </body>
 </html>
