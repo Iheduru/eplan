@@ -8,7 +8,7 @@
     <style>
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: #2d3748;
+            background-color: #f3f4f6;
             margin: 0;
             padding: 0;
             animation: slide-up 1s ease-out;
@@ -24,24 +24,33 @@
         transform: translate(0, 0);
     }
 }
-        header {
-            background-color: white;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
+header {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
         header .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 16px 24px;
+            padding: 16px 0px;
         }
         header nav a {
-            color: #4a5568;
-            margin-right: 16px;
+            border: none;
             text-decoration: none;
-        }
-        header nav a:hover {
-            color: #2d3748;
-        }
+            color: black;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+}
+
+header nav a:hover {
+    background-color: #38a16911;
+    color: #38a169;
+}
         header button {
             background-color: #38a169;
             color: white;
@@ -64,14 +73,13 @@
         main section.relative h1 {
             position:absolute;
             top: 50%;
-            left: 20%;
+            left: 30%;
             transform: translate(-50%, -50%);
             color: white;
             font-size: 2.5rem;
             font-weight: bold;
             justify-content: left;
             display: flex;
-            text-shadow: #2d3748;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
         }
         main .container {
@@ -85,12 +93,19 @@
             margin-bottom: 24px;
         }
         .timezones div {
-            background-color: #38a169;
-            color: white;
+            background: linear-gradient(145deg, #f8f9fa, #ffffff);
             padding: 1px; 
+            border: none;
             border-radius: 6px;
             margin-right: 2px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
+        .timezones div:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
         .timezones div.bg-gray-200 {
             background-color: #edf2f7;
             color: #2d3748;
@@ -105,39 +120,37 @@
         } 
         /*CFI99*/
         .search-bar {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 24px;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+    background: white;
+    padding: 5px;
+    border-radius: 40px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    max-width: 700px;
+    margin: 30px auto;
+}
+
+.search-bar:focus-within {
+    box-shadow: 0 4px 25px rgba(56, 161, 105, 0.15);
+    transform: scale(1.01);
 }
 
 .search-bar input {
-    flex-grow: 1;
-    padding: 8px 16px;
-    border: 1px solid #e2e8f0;
-    border-radius: 30px 0 0 30px;
-    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1);
+    border: none;
+    padding: 12px 20px;
+  
+    font-size: 1rem;
+    color: #2d3748;
 }
 
 .search-bar button {
-    background-color: #38a169;
-    color: white;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 0 30px 30px 0;
-    cursor: pointer;
-    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 12px 25px;
+    border-radius: 30px;
+    background: linear-gradient(145deg, #38a169, #2f855a);
+    transition: all 1s ease;
 }
 
 .search-bar button:hover {
     background-color: #2f855a;
-}
-/* Add this to your existing CSS */
-.search-bar input:focus {
-    outline: 2px solid #38a169;
-    box-shadow: 0 0 5px rgba(56, 161, 105, 0.3);
 }
 
 /* Optional: Add a "no results" message */
@@ -166,12 +179,39 @@
 }
 
 .cards .card {
-    background-color: #38a169;
-    color: white;
-    padding: 16px;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
+    background: linear-gradient(145deg, #3bad6f, #338a5e);
+    box-shadow: 0 4px 15px rgba(56, 161, 105, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 12px;
+    padding: 20px;
+    animation: fadeIn 0.5s ease-out;
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.cards .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(56, 161, 105, 0.3);
+}
+
+.card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.card p {
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.5;
 }
 .card button{
     background: none;
@@ -197,6 +237,36 @@
 @media (max-width: 768px) {
     .cards {
         grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 15px;
+    }
+    
+    .modal-content {
+        width: 95%;
+        margin: 10% auto;
+        padding: 20px;
+        animation: scaleIn 0.3s ease-out;
+    }
+
+    @keyframes scaleIn {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+    
+    header .container {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+    }
+    
+    main section.relative h1 {
+        font-size: 2rem;
     }
 }
         .cards .card .card-header {
@@ -222,15 +292,15 @@
             justify-content: center;
         }
         .add-button button {
-            background-color: #38a169;
-            color: white;
-            padding: 16px;
-            border: none;
+            background: linear-gradient(145deg, #38a169, #2f855a);
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: transform 0.6s ease; /* Smooth transition for the transform property */
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);
+            transition: transform 0.6s ease;
+ /* Smooth transition for the transform property */
 }
+
 
 /* Keyframe animation for spinning effect */
 @keyframes spin {
@@ -243,7 +313,7 @@
 }
 
 /* Apply animation on hover */
-.add-button:hover {
+.add-button button:hover {
     animation: spin 0.6s forwards; /* Trigger spin animation on hover */
 }
         footer {
@@ -279,13 +349,17 @@
     }
 
     .modal-content {
-        background-color: #fefefe;
-        margin: 15% auto;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 80%;
-        max-width: 500px;
-    }
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    transform: scale(0.9);
+    transition: all 0.3s ease;
+}
+
+.modal.active .modal-content {
+    transform: scale(1);
+}
 
     .close {
         color: #aaa;
@@ -314,11 +388,19 @@
 
         #scheduleForm input,
         #scheduleForm textarea {
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #e2e8f0;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        margin-bottom: 15px;
         }
 
+#scheduleForm input:focus,
+#scheduleForm textarea:focus {
+    border-color: #38a169;
+    box-shadow: 0 0 0 3px rgba(56, 161, 105, 0.1);
+}
         #scheduleForm button {
             background-color: #38a169;
             color: white;
@@ -360,14 +442,14 @@
             <h1>Schedules</h1>
         </section>
         <section class="container">
-          <!-- Modified timezone div -->
-        <div class="timezones">
-            <div data-timezone="Texas"></div>
-            <div data-timezone="Madrid" class="bg-gray-200"></div>
-            <div data-timezone="Monaco" class="bg-gray-200"></div>
-            <div data-timezone="London" class="bg-gray-200"></div>
-            <button><i class="fas fa-times"></i></button>
-        </div>
+      <!-- Improved timezone div -->
+    <div class="timezones">
+        <div data-timezone="Texas" class="bg-gray-200"></div>
+        <div data-timezone="Madrid" class="bg-gray-200"></div>
+        <div data-timezone="Monaco" class="bg-gray-200"></div>
+        <div data-timezone="London" class="bg-gray-200"></div>
+        <button><i class="fas fa-times"></i></button>
+    </div>
             <div class="search-bar">
                 <input type="text" placeholder="Search schedules..." id="scheduleSearch">
                 <button onclick="searchSchedules()"><i class="fas fa-search"></i> Search</button>
@@ -717,7 +799,8 @@
             });
         });
         
-        function updateTimezones() {
+        
+function updateTimezones() {
     // Define all time zones with their respective configurations
     const timezones = {
         'Texas': {
@@ -740,6 +823,7 @@
         }
     };
 
+  
     // Update each timezone element
     Object.entries(timezones).forEach(([city, config]) => {
         try {
@@ -765,6 +849,7 @@
                     <div class="timezone-content">
                         <div class="city-name"> ${city}</div>
                         <div class="time">${timeString}</div>
+                        <div class="date">${dateString}</div>
                     </div>
                 `;
             }
@@ -774,58 +859,57 @@
     });
 }
 
-// Add the corresponding CSS
+// Improved CSS for timezones
 const timezonesStyle = document.createElement('style');
 timezonesStyle.textContent = `
     .timezones {
-    display: flex;
-    gap: 0.7rem;  /* Even smaller gap */
-    padding: 0.2rem;
-    justify-content: center;
-    flex-wrap: wrap;
-}
+        display: flex;
+        gap: 0.7rem;  /* Even smaller gap */
+        padding: 0.2rem;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
 
-[data-timezone] {
-    background-color: #f8f9fa;
-    border-radius: 3px;  /* Smaller border radius */
-    padding: 0.2rem;     /* Smaller padding */
-    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
-    transition: transform 0.2s ease-in-out;
-    min-width: 70px;     /* Reduced minimum width */
-    max-width: 80px;     /* Reduced maximum width */
-}
+    [data-timezone] {
+        background-color: #f8f9fa;
+        border-radius: 3px;  /* Smaller border radius */
+        padding: 0.2rem;     /* Smaller padding */
+        box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        transition: transform 0.2s ease-in-out;
+        min-width: 70px;     /* Reduced minimum width */
+        max-width: 80px;     /* Reduced maximum width */
+    }
 
-.timezone-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.1rem;    /* Smaller gap between elements */
-}
+    .timezone-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.1rem;    /* Smaller gap between elements */
+    }
 
-.city-name {
-    font-weight: bold;
-    font-size: 0.6rem;   /* Smaller font size */
-    white-space: nowrap;
-}
+    .city-name {
+        font-weight: bold;
+        font-size: 0.6rem;   /* Smaller font size */
+        white-space: nowrap;
+    }
 
-.time {
-    font-size: 0.7rem;   /* Smaller font size */
-    color: #38a169;
-}
+    .time {
+        font-size: 0.7rem;   /* Smaller font size */
+        color: #38a169;
+    }
 
-.date {
-    font-size: 0.5rem;   /* Smaller font size */
-    color: #666;
-}
+    .date {
+        font-size: 0.5rem;   /* Smaller font size */
+        color: #666;
+    }
 
-/* Make the flag emoji smaller */
-.city-name span {
-    font-size: 0.5rem;
-}
+    /* Make the flag emoji smaller */
+    .city-name span {
+        font-size: 0.5rem;
+    }
 `;
 
 document.head.appendChild(timezonesStyle);
-
 // Update times more frequently (every second)
 setInterval(updateTimezones, 1000);
 
@@ -844,4 +928,3 @@ function addTimeZoneSelector() {
     </script>
 </body>
 </html>
-

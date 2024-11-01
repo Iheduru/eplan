@@ -10,6 +10,7 @@
 <body>
     <div class="container">
         <div class="left-panel">
+            <img src="images/Sign.png" alt="Sign">
             <div class="text-container">
                 <button><h1 id="signup-btn" class="active" onclick="showSignUp()">Sign Up</h1></button>
                 <span><button><h1 id="signin-btn" onclick="showSignIn()">Sign In</h1></button></span>
@@ -70,7 +71,7 @@
                         <input type="checkbox" id="terms-checkbox">
                         <span>Keep me logged in </span>
                     </label>
-                    <a href="home.html"><button type="submit" ></a> Sign In</button></a>
+                    <button type="submit">Sign In</button>
                    <div class="divider">or</div>
                    <div class="be"><span>Need an account ? <a class="toggle-link" href="#"  onclick="showSignUp()">Create one</a></span>
                    
@@ -195,61 +196,9 @@
             }
         });
     
-        // Sign In form validation
-        document.getElementById('signin-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            clearErrors();
-    
-            const email = document.getElementById('email-signin');
-            const password = document.getElementById('password-signin');
-    
-            let isValid = true;
-    
-            if (!email.validity.valid) {
-                showError('email-signin', 'Please enter a valid email address');
-                isValid = false;
-            }
-    
-            if (!password.validity.valid) {
-                showError('password-signin', 'Please enter your password');
-                isValid = false;
-            }
-    
-            if (isValid) {
-        // Here, you would typically send these credentials to a server for verification
-        // For this example, we'll assume any non-empty email and password is valid
-        if (email.value.trim() !== '' && password.value.trim() !== '') {
-            // Successful login
-            alert('Sign In successful!');
-            // Redirect to home.html
-            window.location.href = 'home.html';
-        } else {
-            // Invalid credentials
-            alert('Invalid email or password. Please try again.');
-        }
-    }
-        });
-        function togglePasswordVisibility() {
-    const toggleButtons = document.querySelectorAll('.toggle-password');
-    
-    toggleButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const targetId = this.getAttribute('data-target');
-            const passwordInput = document.getElementById(targetId);
-            
-            if (passwordInput.type === 'password') {
-                passwordInput.type = 'text';
-                this.textContent = '🙈';
-            } else {
-                passwordInput.type = 'password';
-                this.textContent = '👁️';
-            }
-        });
-    });
-}
-
-// Call the function when the DOM is loaded
-    document.addEventListener('DOMContentLoaded', togglePasswordVisibility);
-    
-
+      // Remove all the validation code and simply handle the form submission
+document.getElementById('signin-form').addEventListener('submit', function(e) {
+    e.preventDefault(); // Prevent the default form submission
+    window.location.href = 'home.html'; // Redirect to home.html
+});
     </script>

@@ -26,46 +26,65 @@
                 transform: translate(0, 0);
             }
         }
-        .header, .footer {
+        .footer {
             display: flex;
-            background-color: white;
+            background-color: rgb(0, 0, 0);
             padding: 10px 20px;
             border-bottom: 1px solid #ddd;
         }
         .header img {
             height: 50px;
         }
-        .header nav a, .footer nav a {
+        .footer nav a {
     margin: 0 15px;
     text-decoration: none;
-    color: #000000;
+    color: #ffffff;
     font-weight: 500;
     transition: color 0.3s; 
 }
 
-.header nav a:hover, .footer nav a:hover {
+.footer nav a:hover {
     color: #2d3748;
 }
 
-.header {
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
+header {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0px;
+        }
+        header nav a {
+            border: none;
+            text-decoration: none;
+            color: black;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
 }
 
-.header .settings {
-    background: none;    
-    background-color: #047857;
-    color: white;
-    padding: 0.5rem 1rem; /* Added horizontal padding */
-    border: none;
-    border-radius: 0.9rem;
-    cursor: pointer; 
-    transition: background-color 0.3s; /* Smooth transition for hover effect */
+header nav a:hover {
+    background-color: #38a16911;
+    color: #38a169;
 }
+        header button {
+            background-color: #38a169;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
 
-.header .settings:hover {
-    background-color: #045842; 
+        header button {
+    background-color: #38a169; 
 }
 
 .header nav a:focus, .footer nav a:focus, .header .settings:focus {
@@ -86,10 +105,10 @@
         }
             .task-filter {
             display: flex;
-            justify-content: space-between;
+            justify-content: center ;
             align-items: center;
-            margin-bottom: 20px;
-            
+            margin-bottom: 2px;
+            gap: px;   
         }
         .task-filter select, .task-filter input {
             padding: 10px;
@@ -103,12 +122,13 @@
             border-radius: 40px;
         }
         .task-filter button {
-            background-color: #28a745;
+            background-color: #3bad6f;
             color: white;
             border: none;
             padding: 10px 20px;
             border-radius: 15px;
             box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1);
+            
         }
         .task-container {
     border: 1px solid #e5e5e5;
@@ -124,12 +144,40 @@
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(90px);
+        transform: translateY(20px);
     }
     to {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+.task-container {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.date-picker {
+    display: flex;
+    gap: 10px;
+    padding: 20px 0;
+    overflow-x: auto;
+    justify-content: center;
+}
+
+.date-btn {
+    background: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+   /* min-width: 80px;*/
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.date-btn.active {
+    background: linear-gradient(145deg, #38a169, #2f855a);
+    color: white;
+    transform: translateY(-2px);
 }
 
 /* Add a class to trigger the animation */
@@ -141,7 +189,7 @@
 /* Optional hover effect */
 .task-container:hover {
     background-color: #e1f3e1; /* Lighten background on hover */
-    border: 1px solid #28a745; /* Change border color on hover */
+    border: 1px solid #3bad6f; /* Change border color on hover */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow effect on hover */
 }
 
@@ -150,11 +198,17 @@
             align-items: center;
             justify-content: space-between;
             padding: 1rem;
-            background-color: #276745;
             color: white;
+            box-shadow: 0 4px 15px rgba(56, 161, 105, 0.2);
             margin: 10px 0;
+            background: linear-gradient(145deg, #3bad6f, #338a5e);
+            animation: fadeIn 0.5s ease-out;
             border-radius: 8px;
         }
+        .task-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(56, 161, 105, 0.3);
+}
         
         .hidden {
             display: none;
@@ -164,7 +218,9 @@
             justify-content: flex-end;
             align-items: center;
             margin-top: 20px;
+            z-index: 100;
         }
+
         .add-task input {
             flex: 1;
             padding: 10px;
@@ -185,6 +241,10 @@
     text-shadow: 4px 4px 6px rgba(1, 2, 0, 0.1);
     transition: transform 0.6s ease; /* Smooth transition for the transform property */
 }
+.add-task button:hover {
+    transform: rotate(90deg);
+    animation: spin 0.6s forwards;
+}
 
 /* Keyframe animation for spinning effect */
 @keyframes spin {
@@ -200,6 +260,29 @@
 .add-task button:hover {
     animation: spin 0.6s forwards; /* Trigger spin animation on hover */
 }
+    @media (max-width: 768px) {
+    .task-filter {
+        flex-direction: rows;
+        /*gap: 10px;*/
+    }
+    
+    .date-picker {
+        padding: 10px;
+    }
+    
+    .task-card {
+        margin: 10px;
+    }
+    
+    .add-task {
+        bottom: 20px;
+        right: 20px;
+    }
+    .add-task input {
+        max-width: 100%;
+    }
+    
+}
 
         .footer {
             text-align: center;
@@ -208,17 +291,21 @@
             margin-top: 10px;
             font-size: 14px;
         }
+
+       
     </style>
 </head>
 <body>
-    <header class="header">
-        <nav>
-            <a href="home.html">Home/Schedule</a>
-            <a href="note.html">Note</a>
-            <a href="to do list.html">To Do List</a>
-            <a href="connect.html">Connect</a>
-        </nav>
-        <a href="settings.html" class="settings">Settings</a>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="home.html">Home/Schedule</a>
+                <a href="note.html">Note</a>
+                <a href="to do list.html">To Do List</a>
+                <a href="connect.html">Connect</a>
+            </nav>
+            <a href="settings.html"><button>Settings</button></a>
+        </div>
     </header>
 
     <section class="banner">
@@ -275,7 +362,8 @@
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script>
+    <script src="app.tsx"></script>
+   <script>
         // Object to store tasks by date
         const tasks = {
             "2023-10-15": [
