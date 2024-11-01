@@ -3,182 +3,172 @@
   <title>
    Connect
   </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
   <style>
-   body {
+            body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f3f4f6;
             margin: 0;
-            font-family: Arial, sans-serif;
+            padding: 0;
+            animation: slide-up 1s ease-out;
+            animation-fill-mode: forwards;
         }
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: white;
-            padding: 10px 20px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        .navbar a {
-            text-decoration: none;
-            color: black;
-            margin: 0 10px;
-        }
-        .navbar .settings {
-            background-color: #007B5E;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 20px;
-        }
-        .header {
-            background-image: url('images/desk.png');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            text-align: left;
-            padding: 100px 0;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
-            padding-left: 50px;
-        }
-        .header h1 {
-            margin: 0;
-            font-size: 48px;
-        }
-        .content {
-            padding: 20px;
-        }
-        .card {
-            background-color: #007B5E;
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        .card img {
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-        }
-        .fab {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background-color: #047857;
-            color: white;
-            width: 4rem;
-            height: 4rem;
-            border-radius: 9999px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        footer {
-            background-color: black;
-            color: white;
-            padding: 1rem 0;
-            text-align: center;
-        }
-        footer nav a {
-            margin-right: 1rem;
-            color: white;
-            text-decoration: none;
-        }
-        footer nav a:hover {
-            text-decoration: underline;
-        }
+        @keyframes slide-up {
+    from {
+        opacity: 0;
+        transform: translate(0, 50px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+}
+   .hover-transform:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(56, 161, 105, 0.3);
+   }
+   .header-title {
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 2.5rem;
+    font-weight: bold;
+    justify-content: left;
+    display: flex;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+   }
   </style>
  </head>
- <body>
-  <div class="navbar">
-   <div class="nav-links">
-    <a href="home.html">Home/Schedule</a>
-    <a href="note.html">Note</a>
-    <a href="to do list.html">To Do List</a>
-    <a href="connect.html">Connect</a>
+ <body class="bg-white">
+  <!-- Navbar -->
+  <nav class="bg-white shadow-md sticky top-0 z-50">
+   <div class="container mx-auto px-4 py-2 flex justify-between items-center">
+    <div class="flex space-x-4">
+     <a class="text-gray-800 hover:text-gray-600" href="home.html">
+      Home/ Schedule
+     </a>
+     <a class="text-gray-800 hover:text-gray-600" href="note.html">
+      Note
+     </a>
+     <a class="text-gray-800 hover:text-gray-600" href="to do list.html">
+      To Do List
+     </a>
+     <a class="text-gray-800 hover:text-gray-600" href="connect.html">
+      Connect
+     </a>
+    </div>
+    <button class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+     <a href="settings.html">Settings</a>
+    </button>
    </div>
-   <div class="settings">
-    <a href="settings.html" class="settings">Settings</a>
-</div>
+  </nav>
+  <!-- Header Image -->
+  <div class="relative">
+   <img alt="Background with a notebook, highlighter, and laptop" class="w-full h-64 object-cover" height="300" src="images/desk.png" width="1920"/>
+   <h1 class="header-title">
+    Connect
+   </h1>
   </div>
-  <div class="header">
-   <h1>Connect</h1>
+  <!-- Content -->
+  <div class="container mx-auto px-4 py-8 mb-32">
+   <div class="space-y-4">
+    <div class="bg-green-800 text-white p-4 rounded flex justify-between items-center hover:bg-green-900 hover-transform">
+     <div>
+      <h2 class="text-lg font-bold">
+       Strategic Sales Summit Group
+      </h2>
+      <p>
+       Empowering Growth through Lead Generation and Business Development
+      </p>
+     </div>
+     <img alt="Profile image of a person" class="rounded-full" height="50" src="https://storage.googleapis.com/a1aa/image/mhDqTmqluy7gNhqD7r2heqsIxTLpZXaeMwTygbMNeFwLeXyOB.jpg" width="50"/>
+    </div>
+    <div class="bg-green-800 text-white p-4 rounded flex justify-between items-center hover:bg-green-900 hover-transform">
+     <div>
+      <h2 class="text-lg font-bold">
+       Strategic Sales Summit Group
+      </h2>
+      <p>
+       Empowering Growth through Lead Generation and Business Development
+      </p>
+     </div>
+     <img alt="Profile image of a person" class="rounded-full" height="50" src="https://storage.googleapis.com/a1aa/image/mhDqTmqluy7gNhqD7r2heqsIxTLpZXaeMwTygbMNeFwLeXyOB.jpg" width="50"/>
+    </div>
+    <div class="bg-green-800 text-white p-4 rounded flex justify-between items-center hover:bg-green-900 hover-transform">
+     <div>
+      <h2 class="text-lg font-bold">
+       Strategic Sales Summit Group
+      </h2>
+      <p>
+       Empowering Growth through Lead Generation and Business Development
+      </p>
+     </div>
+     <img alt="Profile image of a person" class="rounded-full" height="50" src="https://storage.googleapis.com/a1aa/image/mhDqTmqluy7gNhqD7r2heqsIxTLpZXaeMwTygbMNeFwLeXyOB.jpg" width="50"/>
+    </div>
+    <div class="bg-green-800 text-white p-4 rounded flex justify-between items-center hover:bg-green-900 hover-transform">
+     <div>
+      <h2 class="text-lg font-bold">
+       Strategic Sales Summit Group
+      </h2>
+      <p>
+       Empowering Growth through Lead Generation and Business Development
+      </p>
+     </div>
+     <img alt="Profile image of a person" class="rounded-full" height="50" src="https://storage.googleapis.com/a1aa/image/mhDqTmqluy7gNhqD7r2heqsIxTLpZXaeMwTygbMNeFwLeXyOB.jpg" width="50"/>
+    </div>
+    <div class="bg-green-800 text-white p-4 rounded flex justify-between items-center hover:bg-green-900 hover-transform">
+     <div>
+      <h2 class="text-lg font-bold">
+       Strategic Sales Summit Group
+      </h2>
+      <p>
+       Empowering Growth through Lead Generation and Business Development
+      </p>
+     </div>
+     <img alt="Profile image of a person" class="rounded-full" height="50" src="https://storage.googleapis.com/a1aa/image/mhDqTmqluy7gNhqD7r2heqsIxTLpZXaeMwTygbMNeFwLeXyOB.jpg" width="50"/>
+    </div>
+   </div>
   </div>
-  
-  <div class="content">
-   <div class="card">
-    <div>
-     <h2>
-      Strategic Sales Summit Group
-     </h2>
-     <p>
-      Empowering Growth through Lead Generation and Business Development
-     </p>
-    </div>
-    <img alt="Profile image of a person" src="images/pf (1).jpg"/>
- </div>
-   <div class="card">
-    <div>
-     <h2>
-      Strategic Sales Summit Group
-     </h2>
-     <p>
-      Empowering Growth through Lead Generation and Business Development
-     </p>
-    </div>
-    <img alt="Profile image of a person" src="images/pf (2).jpg"/>
+   <!-- Floating Action Button -->
+   <div class="fixed bottom-8 right-8">
+    <button class="bg-green-800 text-white p-4 rounded-full shadow-lg hover:bg-green-900 hover-transform">
+     <i class="fas fa-plus text-2xl">
+     </i>
+    </button>
    </div>
-   <div class="card">
+  <!-- Footer -->
+  <footer class="bg-black text-white py-4">
+   <div class="container mx-auto px-4 flex justify-between">
+    <div class="flex space-x-4">
+     <a class="hover:underline" href="home.html">
+      HOME
+     </a>
+     <a class="hover:underline" href="home.html">
+      Schedule
+     </a>
+     <a class="hover:underline" href="note.html">
+      Note
+     </a>
+     <a class="hover:underline" href="to do list.html">
+      To Do List
+     </a>
+     <a class="hover:underline" href="connect.html">
+      Connect
+     </a>
+     <a class="hover:underline" href="settings.html">
+      Settings
+     </a>
+    </div>
     <div>
-     <h2>
-      Strategic Sales Summit Group
-     </h2>
-     <p>
-      Empowering Growth through Lead Generation and Business Development
-     </p>
+     <a class="hover:underline" href="#">
+      Terms &amp; Condition
+     </a>
     </div>
-    <img alt="Profile image of a person" src="images/pf (3).jpg"/>
    </div>
-   <div class="card">
-    <div>
-     <h2>
-      Strategic Sales Summit Group
-     </h2>
-     <p>
-      Empowering Growth through Lead Generation and Business Development
-     </p>
-    </div>
-    <img alt="Profile image of a person" src="images/pf (7).jpg"/>
-   </div>
-   <div class="card">
-    <div>
-     <h2>
-      Strategic Sales Summit Group
-     </h2>
-     <p>
-      Empowering Growth through Lead Generation and Business Development
-     </p>
-    </div>
-    <img alt="Profile image of a person" src="images/pf (6).jpg"/>
-   </div>
-  </div>
-  <!-- Floating Action Button -->
-  <div class="fab">
-    <i class="fas fa-plus"> </i>
-</div>
-   <!-- Footer -->
-   <footer>
-    <div class="container">
-        <nav>
-            <a href="home.html">HOME</a>
-            <a href="note.html">Note</a>
-            <a href="to do list.html">To Do List</a>
-            <a href="connect.html">Connect</a>
-            <a href="settings.html">Settings</a>
-        </nav>
-        <div>Terms & Condition</div>
-    </div>
-</footer>
+  </footer>
  </body>
 </html>
