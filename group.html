@@ -1,195 +1,105 @@
 <html>
 <head>
     <title>Create Group</title>
+    <script src="https://unpkg.com/react/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: Arial, sans-serif;
+body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f3f4f6;
             margin: 0;
             padding: 0;
-            background-color: #FFFFFF;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
+            animation: slide-up 1s ease-out;
+            animation-fill-mode: forwards;
         }
-        .header {
-            background-color: #004d40;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            position: relative;
+        @keyframes slide-up {
+    from {
+        opacity: 0;
+        transform: translate(0, 50px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
         }
-        .header .close {
-            position: absolute;
-            left: 20px;
-            top: 20px;
-            font-size: 24px;
-            cursor: pointer;
-        }
-        .header h1 {
-            margin: 0;
-            font-size: 36px;
-        }
-        .nav {
-            display: flex;
-            justify-content: center;
-            padding: 10px 0;
-            background-color: #FFFFFF;
-        }
-        .nav a {
-            margin: 0 15px;
-            text-decoration: none;
-            color: black;
-            font-size: 16px;
-        }
-        .nav .settings {
-            background-color: #004d40;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 20px;
-        }
-        .content {
-            padding: 20px;
-            text-align: center;
-            flex: 1;
-            position: relative;
-        }
-        .content .question-section {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 20px 0;
-        }
-        .content .question-section .profile-pic {
-            width: 100px;
-            height: 100px;
-            background-color: #d3d3d3;
-            border-radius: 50%;
-            margin-right: 20px;
-        }
-        .content .question-section input {
-            flex: 1;
-            padding: 10px;
-            border: none;
-            border-bottom: 1px solid #004d40;
-            font-size: 18px;
-        }
-        .content .question-section .mic {
-            margin-left: 20px;
-            font-size: 24px;
-            color: #d3d3d3;
-        }
-        .content .permissions {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin: 20px 0;
-            padding: 10px 0;
-            border-top: 1px solid #d3d3d3;
-            border-bottom: 1px solid #d3d3d3;
-        }
-        .content .permissions .title {
-            font-size: 18px;
-        }
-        .content .permissions .settings-icon {
-            font-size: 24px;
-            color: #d3d3d3;
-        }
-        .content .add-member {
-            display: flex;
-            align-items: center;
-            margin: 20px 0;
-        }
-        .content .add-member .add-icon {
-            width: 50px;
-            height: 50px;
-            background-color: #4d4d4d;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 24px;
-            margin-right: 10px;
-        }
-        .content .add-member .text {
-            color: #d3d3d3;
-            font-size: 18px;
-        }
-        .content .submit {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            background-color: #004d40;
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-        }
-        .footer {
-            background-color: #000000;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        .footer .nav {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 10px;
-        }
-        .footer .nav a {
-            margin: 0 15px;
-            text-decoration: none;
-            color: transparent;
-            font-size: 16px;
-        }
-        .footer .terms {
-            font-size: 14px;
+        .search-input:focus {
+            outline: none;
+            box-shadow: 0 0 10px rgba(0, 128, 0, 0.5);
+            transition: box-shadow 0.3s ease-in-out;
         }
     </style>
 </head>
-<body>
-    <div class="header">
-        <div class="close">&times;</div>
-        <h1>Create Group</h1>
-    </div>
-    <div class="nav">
-        <a href="home.html">Home/Schedule</a>
-        <a href="note.html">Note</a>
-        <a href="to do list.html">To Do List</a>
-        <a href="connect.html">Connect</a>
-        <a href="settings.html" class="settings">Settings</a>
-    </div>
-    <div class="content">
-        <div class="question-section">
-            <div class="profile-pic"></div>
-            <input type="text" placeholder="Ask Question">
-            <div class="mic"><i class="fas fa-microphone"></i></div>
-        </div>
-        <div class="permissions">
-            <div class="title">Group permissions</div>
-            <div class="settings-icon"><i class="fas fa-cog"></i></div>
-        </div>
-        <div class="add-member">
-            <div class="add-icon"><i class="fas fa-plus"></i></div>
-            <div class="text">+ Add member</div>
-        </div>
-        <div class="submit"><i class="fas fa-check"></i></div>
-    </div>
-    <div class="footer">
-        <div class="nav">
-            <a href="#">HOME</a>
-            <a href="#">Schedule</a>
-            <a href="#">Note</a>
-            <a href="#">To Do List</a>
-            <a href="#">Connect</a>
-            <a href="#">Settings</a>
-        </div>
-        <div class="terms">Terms & Condition</div>
-    </div>
+<body class="bg-white">
+    <div id="root"></div>
+    <script type="text/babel">
+        const App = () => {
+            return (
+                <div>
+                    <header class="flex justify-between items-center p-4 bg-white shadow-md">
+                        <div class="flex-1 flex justify-center">
+                            <nav class="flex space-x-4">
+                                <a href="home.html" className="text-gray-600 hover:text-gray-900 transition duration-300">Home/Schedule</a>
+                                <a href="note.html" className="text-gray-600 hover:text-gray-900 transition duration-300">Note</a>
+                                <a href="to do list.html" className="text-gray-600 hover:text-gray-900 transition duration-300">To Do List</a>
+                                <a href="connect.html" className="text-gray-600 hover:text-gray-900 transition duration-300">Connect</a>
+                            </nav>
+                        </div>
+                        <button className="bg-green-600 text-white px-4 py-2 rounded-full hover:bg-green-700 transition duration-300"><a href="settings.html">Settings</a></button>
+                    </header>
+                    <main class="mt-0">
+                        <div class="bg-green-800 text-white text-center py-8 relative">
+                            <a href="connect.html"><i class="fas fa-times text-2xl absolute left-4 top-1/2 transform -translate-y-1/2"></i></a>
+                            <h1 class="text-3xl font-bold">Create Group</h1>
+                        </div>
+                        <div class="p-8">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-24 h-24 bg-gray-300 rounded-full"></div>
+                                <div class="flex-1">
+                                    <input type="text" placeholder="Ask Question" class="w-full border-b border-gray-300 focus:outline-none focus:border-green-600 text-gray-700 py-2 transition duration-300"/>
+                                </div>
+                                <i class="fas fa-microphone text-gray-500"></i>
+                            </div>
+                            <div class="mt-8">
+                                <div class="flex justify-between items-center">
+                                    <h2 class="text-gray-700">Group permissions</h2>
+                                    <i class="fas fa-cog text-gray-500"></i>
+                                </div>
+                                <div class="mt-4 flex items-center space-x-4">
+                                    <div class="w-12 h-12 bg-gray-700 text-white flex items-center justify-center rounded-full hover:bg-gray-600 transition duration-300">
+                                        <i class="fas fa-plus"></i>
+                                    </div>
+                                    <span class="text-gray-500">+ Add member</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-end p-8 mt-[36rem]">
+                            <button class="bg-green-800 text-white p-5 rounded-lg hover:bg-green-700 transition duration-300 transform hover:scale-105">
+                                <i class="fas fa-check text-2xl"></i>
+                            </button>
+                        </div>
+                    </main>
+                    <footer class="bg-black text-white py-4">
+                        <div class="flex justify-center space-x-8">
+                            <a href="home.html" class="text-white hover:text-gray-400 transition duration-300">HOME</a>
+                            <a href="home.html" class="text-white hover:text-gray-400 transition duration-300">Schedule</a>
+                            <a href="note.html" class="text-white hover:text-gray-400 transition duration-300">Note</a>
+                            <a href="to do list.html" class="text-white hover:text-gray-400 transition duration-300">To Do List</a>
+                            <a href="connect.html" class="text-white hover:text-gray-400 transition duration-300">Connect</a>
+                            <a href="settings.html" class="text-white hover:text-gray-400 transition duration-300">Settings</a>
+                        </div>
+                        <div class="text-center mt-4">
+                            <a href="#" class="text-white hover:text-gray-400 transition duration-300">Terms & Condition</a>
+                        </div>
+                    </footer>
+                </div>
+            );
+        };
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
 </body>
 </html>

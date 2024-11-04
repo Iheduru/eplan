@@ -1,245 +1,190 @@
 <html>
- <head>
-  <title>
-   Settings
-  </title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-  
-  <style>
-   body {
-            font-family: Arial, sans-serif;
+<head>
+    <title>Settings</title>
+    <script src="https://unpkg.com/react/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f3f4f6;
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
+            animation: slide-up 1s ease-out;
+            animation-fill-mode: forwards;
         }
-        .header {
-    position: relative;
-}
+        @keyframes slide-up {
+    from {
+        opacity: 0;
+        transform: translate(0, 50px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+        }
+        .search-input:focus {
+            outline: none;
+            box-shadow: 0 0 10px rgba(0, 128, 0, 0.5);
+            transition: box-shadow 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div id="root"></div>
+    <script type="text/babel">
+        const App = () => {
+            return (
+                <div>
+                    <header className="bg-white shadow-md">
+                        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+                            <nav className="flex space-x-4">
+                                <a href="home.html" className="text-gray-600 hover:text-gray-900 transition duration-300">Home/Schedule</a>
+                                <a href="note.html" className="text-gray-600 hover:text-gray-900 transition duration-300">Note</a>
+                                <a href="to do list.html" className="text-gray-600 hover:text-gray-900 transition duration-300">To Do List</a>
+                                <a href="connect.html" className="text-gray-600 hover:text-gray-900 transition duration-300">Connect</a>
+                            </nav>
+                            <button className="bg-green-600 text-white px-4 py-2 rounded-full hover:bg-green-700 transition duration-300"><a href="settings.html">Settings</a></button>
+                        </div>
+                    </header>
+                    <div className="relative">
+                        <img src="images/desk.png" alt="Background image of a desk with a laptop, highlighter, and open book" className="w-full h-64 object-cover"/>
+                        <div className="absolute inset-0 flex items-center justify-center">
+                            <h1 className="text-white text-4xl font-bold">Settings</h1>
+                        </div>
+                    </div>
+                    <main className="container mx-auto px-4 py-8">
+                        <section className="mb-8">
+                            <h2 className="text-xl font-bold mb-4">General</h2>
+                            <div className="bg-white shadow-md rounded-lg p-4">
+                                <div className="border-b py-4 flex justify-between items-center hover:bg-gray-100 transition duration-300 cursor-pointer">
+                                    <div>
+                                        <p className="font-bold">Remove Ads</p>
+                                        <p className="text-gray-500 text-left">One payment to remove ads forever</p>
+                                    </div>
+                                    <i className="fas fa-chevron-right text-gray-500"></i>
+                                </div>
+                                <div className="border-b py-4 flex justify-between items-center hover:bg-gray-100 transition duration-300">
+                                    <p className="font-bold">Status bar</p>
+                                    <div className="flex items-center">
+                                        <p className="text-gray-500 text-left mr-2">Disable</p>
+                                        <input type="checkbox" className="form-checkbox cursor-pointer"/>
+                                    </div>
+                                </div>
+                                <div className="border-b py-4 flex justify-between items-center hover:bg-gray-100 transition duration-300">
+                                    <p className="font-bold">Confirm finishing tasks</p>
+                                    <div className="flex items-center">
+                                        <p className="text-gray-500 text-left mr-2">Disable</p>
+                                        <input type="checkbox" className="form-checkbox cursor-pointer"/>
+                                    </div>
+                                </div>
+                                <div className="border-b py-4 flex justify-between items-center hover:bg-gray-100 transition duration-300">
+                                    <p className="font-bold">Confirm repeating tasks</p>
+                                    <div className="flex items-center">
+                                        <p className="text-gray-500 text-left mr-2">Disable</p>
+                                        <input type="checkbox" className="form-checkbox cursor-pointer"/>
+                                    </div>
+                                </div>
+                                <div className="border-b py-4 flex justify-between items-center hover:bg-gray-100 transition duration-300">
+                                    <p className="font-bold">Found in clipboard</p>
+                                    <div className="flex items-center">
+                                        <p className="text-gray-500 text-left mr-2">Disable</p>
+                                        <input type="checkbox" className="form-checkbox cursor-pointer"/>
+                                    </div>
+                                </div>
+                                <div className="border-b py-4 flex justify-between items-center hover:bg-gray-100 transition duration-300">
+                                    <p className="font-bold">List to show at startup</p>
+                                    <p className="text-gray-500 text-left">All Lists</p>
+                                </div>
+                                <div className="border-b py-4 flex justify-between items-center hover:bg-gray-100 transition duration-300">
+                                    <p className="font-bold">First day of week</p>
+                                    <p className="text-gray-500 text-left">Monday</p>
+                                </div>
+                                <div className="border-b py-4 flex justify-between items-center hover:bg-gray-100 transition duration-300">
+                                    <p className="font-bold">Time format</p>
+                                    <p className="text-gray-500 text-left">24 hour</p>
+                                </div>
+                                <div className="border-b py-4 flex justify-between items-center hover:bg-gray-100 transition duration-300">
+                                    <p className="font-bold">Sort order</p>
+                                    <p className="text-gray-500 text-left">24 hour</p>
+                                </div>
+                            </div>
+                        </section>
+                        <section className="mb-8">
+                            <h2 className="text-xl font-bold mb-4">Notifications</h2>
+                            <div className="bg-white shadow-md rounded-lg p-4">
+                                <div className="border-b py-4 flex justify-between items-center hover:bg-gray-100 transition duration-300">
+                                    <p className="font-bold">Sound</p>
+                                    <p className="text-gray-500 text-left">Default (Zero Hour)</p>
+                                </div>
+                                <div className="border-b py-4 flex justify-between items-center hover:bg-gray-100 transition duration-300">
+                                    <p className="font-bold">Voice</p>
+                                    <p className="text-gray-500 text-left">Uses system default speech synthesizer (TTS)</p>
+                                </div>
+                                <div className="border-b py-4 flex justify-between items-center hover:bg-gray-100 transition duration-300">
+                                    <p className="font-bold">Vibration</p>
+                                    <div className="flex items-center">
+                                        <p className="text-gray-500 text-left mr-2">Enabled</p>
+                                        <input type="checkbox" className="form-checkbox cursor-pointer"/>
+                                    </div>
+                                </div>
+                                <div className="border-b py-4 flex justify-between items-center hover:bg-gray-100 transition duration-300">
+                                    <p className="font-bold">Task notification</p>
+                                    <div className="flex items-center">
+                                        <p className="text-gray-500 text-left mr-2">On time</p>
+                                        <input type="checkbox" className="form-checkbox cursor-pointer"/>
+                                    </div>
+                                </div>
+                                <div className="border-b py-4 flex justify-between items-center hover:bg-gray-100 transition duration-300">
+                                    <p className="font-bold">Day summary</p>
+                                    <div className="flex items-center">
+                                        <p className="text-gray-500 text-left mr-2">Enabled</p>
+                                        <input type="checkbox" className="form-checkbox cursor-pointer"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section className="mb-8">
+                            <h2 className="text-xl font-bold mb-4">Quick Task</h2>
+                            <div className="bg-white shadow-md rounded-lg p-4">
+                                <div className="border-b py-4 flex justify-between items-center hover:bg-gray-100 transition duration-300">
+                                    <p className="font-bold">Quick task bar</p>
+                                    <div className="flex items-center">
+                                        <p className="text-gray-500 text-left mr-2">Enabled</p>
+                                        <input type="checkbox" className="form-checkbox cursor-pointer"/>
+                                    </div>
+                                </div>
+                                <div className="border-b py-4 flex justify-between items-center hover:bg-gray-100 transition duration-300">
+                                    <p className="font-bold">Default due date</p>
+                                    <p className="text-gray-500 text-left">No date</p>
+                                </div>
+                            </div>
+                        </section>
+                        <div className="flex justify-center">
+                            <button className="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700 transition duration-300 transform hover:scale-105 shadow-md cursor-pointer"><a href="poll.html">Create A Poll</a></button>
+                        </div>
+                    </main>
+                    <footer className="bg-black text-white py-8">
+                        <div className="container mx-auto px-4">
+                            <nav className="flex justify-center space-x-4 mb-4">
+                            <a href="home.html" class="text-white hover:text-gray-400 transition duration-300">HOME</a>
+                            <a href="home.html" class="text-white hover:text-gray-400 transition duration-300">Schedule</a>
+                            <a href="note.html" class="text-white hover:text-gray-400 transition duration-300">Note</a>
+                            <a href="to do list.html" class="text-white hover:text-gray-400 transition duration-300">To Do List</a>
+                            <a href="connect.html" class="text-white hover:text-gray-400 transition duration-300">Connect</a>
+                            <a href="settings.html" class="text-white hover:text-gray-400 transition duration-300">Settings</a>
+                            </nav>
+                            <p className="text-center">Terms & Condition</p>
+                        </div>
+                    </footer>
+                </div>
+            );
+        };
 
-.image-container {
-    position: relative;
-    width: 100%;
-}
-
-.image-container img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-}
-
-.overlay-text {
-    position: absolute;
-    top: 50%;
-    right: 60%;
-    transform: translate(-50%, -50%);
-    color: white;
-    font-size: 48px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
-    margin: 0;
-}
-        .navbar {
-            display: flex;
-            justify-content: center;
-            background-color: white;
-            padding: 10px 0;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        .navbar a {
-            margin: 0 15px;
-            text-decoration: none;
-            color: black;
-            font-weight: bold;
-        }
-        .navbar a.settings {
-            background-color: #28a745;
-            color: white;
-            padding:  5px 10px;
-            border-radius: 5px;
-            text-align: right;
-        
-        }
-        .content {
-            padding: 20px;
-            background-color: white;
-        }
-        .content h1 {
-            font-size: 36px;
-            margin-bottom: 20px;
-        }
-        .section {
-            margin-bottom: 40px;
-        }
-        .section h2 {
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-        .item {
-            display: flex;
-            padding: 10px 0;
-            border-bottom: 1px solid #ddd;
-            
-        }
-        .item:last-child {
-            border-bottom: none;
-        }
-        .item label {
-            font-size: 18px;
-            display: flex;
-              
-        }
-        .item span {
-            color: #888;
-            padding-top: 20px;
-            left: 50%;
-            display: flex;
-            
-            
-        }
-        .item input[type="checkbox"] {
-            margin-left: 10px;
-    
-        }
-        .footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 20px 0;
-        }
-        .footer a {
-            color: white;
-            margin: 0 15px;
-            text-decoration: none;
-        }
-        .footer p {
-            margin: 10px 0 0;
-        }
-        .button-container {
-
-            margin-top: 20px;
-            align-items: left;
-        }
-        .button-container button {
-            background-color: #28a745;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 18px;
-            border-radius: 5px;
-            cursor: pointer;
-            
-        }
-  </style>
- </head>
- <body>
- 
-  <div class="navbar">
-   <a href="home.html">Home/Schedule</a>
-   <a href="note.html">Note</a>
-   <a href="to do list.html"> To Do List</a>
-   <a href="connect.html"> Connect</a>
-   <a class="settings" href="settings.html">Settings</a>
-  </div>
-  <div class="content"> 
-    <div class="header">
-        <div class="image-container">
-            <img src="images/desk.png" alt="Desk">
-            <h1 class="overlay-text">Settings</h1>
-        </div>
-    </div>
-  
-   <div class="section">
-    <h2> General </h2>
-    <div class="item"><label>Remove Ads</label>
-     <span> One payment to remove ads forever</span>
-    </div>
-    <div class="item"><label>Status bar</label>
-     <span>Disable</span>
-     <input type="checkbox"/>
-    </div>
-    <div class="item">
-     <label>Confirm finishing task </label>
-     <span>Disable</span>
-     <input type="checkbox"/>
-    </div>
-    <div class="item">
-     <label> Confirm repeating task </label>
-     <span> Disable</span>
-     <input  type="checkbox"/>
-    </div>
-    <div class="item">
-     <label> Found in clipboard</label>
-     <span>Disable</span>
-     <input type="checkbox"/>
-    </div>
-    <div class="item">
-     <label> List to show at startup</label>
-     <span> All Lists</span>
-    </div>
-    <div class="item">
-     <label>First day of week</label>
-     <span>Monday </span>
-    </div>
-    <div class="item">
-     <label>Time format</label>
-     <span> 24 hour </span>
-    </div>
-    <div class="item">
-     <label> Sort order </label>
-     <span>24 hour</span>
-    </div>
-   </div>
-   <div class="section">
-    <h2 >Notification</h2>
-    <div class="item">
-     <label> Sound</label>
-     <span> Default (Zero Hour)</span>
-    </div>
-    <div class="item">
-     <label>Voice </label>
-     <span>Uses system default speech synthesizer (TTS)</span>
-    </div>
-    <div class="item">
-     <label>Vibration</label>
-     <span>Enabled</span>
-     <input checked="" type="checkbox"/>
-    </div>
-    <div class="item">
-     <label>Task notification</label>
-     <span>On time</span>
-     <input type="checkbox"/>
-    </div>
-    <div class="item">
-     <label>Day summary</label>
-     <span>Enabled</span>
-     <input checked="" type="checkbox"/>
-    </div>
-   </div>
-   <div class="section">
-    <h2>Quick Task </h2>
-    <div class="item">
-     <label> Quick task bar</label>
-     <span>Enabled</span>
-     <input checked="" type="checkbox"/>
-    </div>
-    <div class="item">
-     <label> Default due date</label>
-     <span>No date</span>
-    </div>
-   </div>
-   <div class="button-container">
-   <a href="poll.html"> <button>Create A Poll</button></a>
-   </div>
-  </div>
-  <div class="footer">
-    <a href="home.html">HOME</a>
-    <a href="note.html">Note</a>
-    <a href="to do list.html">To Do List</a>
-    <a href="connect.html">Connect</a>
-    <a href="settings.html">Settings</a>
-   <p>
-    Terms &amp; Condition
-   </p>
-  </div>
-</div>
- </body>
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
 </html>

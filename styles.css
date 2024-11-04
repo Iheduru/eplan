@@ -200,14 +200,17 @@ body {
     width: 100%;
 }
 
-button.toggle-password{
-    background: none;
-    justify-items: left;
+.toggle-password {
     position: absolute;
     right: 10px;
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
+    color: #999;
+}
+
+.toggle-password:hover {
+    color: #333;
 }
 
 .password-container input {

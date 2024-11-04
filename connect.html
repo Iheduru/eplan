@@ -1,13 +1,13 @@
 <html>
- <head>
-  <title>
-   Connect
-  </title>
-  <script src="https://cdn.tailwindcss.com">
-  </script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-  <style>
-            body {
+<head>
+    <title>Connect</title>
+    <script src="https://unpkg.com/react/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
+    <style>
+      body {
             font-family: 'Roboto', sans-serif;
             background-color: #f3f4f6;
             margin: 0;
@@ -24,151 +24,73 @@
         opacity: 1;
         transform: translate(0, 0);
     }
-}
-   .hover-transform:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(56, 161, 105, 0.3);
-   }
-   .header-title {
-    position: absolute;
-    top: 50%;
-    left: 30%;
-    transform: translate(-50%, -50%);
-    color: white;
-    font-size: 2.5rem;
-    font-weight: bold;
-    justify-content: left;
-    display: flex;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-   }
-  </style>
- </head>
- <body class="bg-white">
-  <!-- Navbar -->
-  <nav class="bg-white shadow-md sticky top-0 z-50">
-   <div class="container mx-auto px-4 py-2 flex justify-between items-center">
-    <div class="flex space-x-4">
-     <a class="text-gray-800 hover:text-gray-600" href="home.html">
-      Home/ Schedule
-     </a>
-     <a class="text-gray-800 hover:text-gray-600" href="note.html">
-      Note
-     </a>
-     <a class="text-gray-800 hover:text-gray-600" href="to do list.html">
-      To Do List
-     </a>
-     <a class="text-gray-800 hover:text-gray-600" href="connect.html">
-      Connect
-     </a>
-    </div>
-    <button class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
-     <a href="settings.html">Settings</a>
+        }
+        .search-input:focus {
+            outline: none;
+            box-shadow: 0 0 10px rgba(0, 128, 0, 0.5);
+            transition: box-shadow 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const App = () => {
+            return (
+                <div>
+                    <header className="bg-white shadow-md">
+                        <div className="container mx-auto flex justify-between items-center py-4 px-6">
+                            <nav className="flex space-x-4">
+                                <a href="home.html" className="text-gray-600 hover:text-gray-900 transition duration-300">Home/Schedule</a>
+                                <a href="note.html" className="text-gray-600 hover:text-gray-900 transition duration-300">Note</a>
+                                <a href="to do list.html" className="text-gray-600 hover:text-gray-900 transition duration-300">To Do List</a>
+                                <a href="connect.html" className="text-gray-600 hover:text-gray-900 transition duration-300">Connect</a>
+                            </nav>
+                            <button className="bg-green-600 text-white px-4 py-2 rounded-full hover:bg-green-700 transition duration-300"><a href="settings.html">Settings</a></button>
+                        </div>
+                    </header>
+                    <div className="relative">
+                        <img src="images/desk.png" alt="Background with a notebook, highlighter, and laptop" className="w-full h-64 object-cover"/>
+                        <h1 className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-4xl font-bold">Connect</h1>
+                    </div>
+                    <main className="container mx-auto py-8 px-6 mb-18">
+                        <div className="space-y-4">
+                            {[...Array(5)].map((_, index) => (
+                                <div key={index} className="bg-green-800 text-white p-4 rounded flex justify-between items-center transform transition duration-300 hover:scale-105">
+                                    <div>
+                                        <h2 className="text-lg font-bold">Strategic Sales Summit Group</h2>
+                                        <p>Empowering Growth through Lead Generation and Business Development</p>
+                                    </div>
+                                    <img src="https://placehold.co/50" alt="Profile picture of a person" className="w-12 h-12 rounded-full"/>
+                                </div>
+                            ))}
+                        </div>
+                        <div className="mt-6 flex justify-center">
+    <button className="bg-green-700 text-white p-4 rounded-lg text-2xl hover:bg-green-800 transition transform hover:rotate-45">
+        <a href="group.html"><i className="fas fa-plus"></i></a>
     </button>
-   </div>
-  </nav>
-  <!-- Header Image -->
-  <div class="relative">
-   <img alt="Background with a notebook, highlighter, and laptop" class="w-full h-64 object-cover" height="300" src="images/desk.png" width="1920"/>
-   <h1 class="header-title">
-    Connect
-   </h1>
-  </div>
-  <!-- Content -->
-  <div class="container mx-auto px-4 py-8 mb-32">
-   <div class="space-y-4">
-    <div class="bg-green-800 text-white p-4 rounded flex justify-between items-center hover:bg-green-900 hover-transform">
-     <div>
-      <h2 class="text-lg font-bold">
-       Strategic Sales Summit Group
-      </h2>
-      <p>
-       Empowering Growth through Lead Generation and Business Development
-      </p>
-     </div>
-     <img alt="Profile image of a person" class="rounded-full" height="50" src="https://storage.googleapis.com/a1aa/image/mhDqTmqluy7gNhqD7r2heqsIxTLpZXaeMwTygbMNeFwLeXyOB.jpg" width="50"/>
-    </div>
-    <div class="bg-green-800 text-white p-4 rounded flex justify-between items-center hover:bg-green-900 hover-transform">
-     <div>
-      <h2 class="text-lg font-bold">
-       Strategic Sales Summit Group
-      </h2>
-      <p>
-       Empowering Growth through Lead Generation and Business Development
-      </p>
-     </div>
-     <img alt="Profile image of a person" class="rounded-full" height="50" src="https://storage.googleapis.com/a1aa/image/mhDqTmqluy7gNhqD7r2heqsIxTLpZXaeMwTygbMNeFwLeXyOB.jpg" width="50"/>
-    </div>
-    <div class="bg-green-800 text-white p-4 rounded flex justify-between items-center hover:bg-green-900 hover-transform">
-     <div>
-      <h2 class="text-lg font-bold">
-       Strategic Sales Summit Group
-      </h2>
-      <p>
-       Empowering Growth through Lead Generation and Business Development
-      </p>
-     </div>
-     <img alt="Profile image of a person" class="rounded-full" height="50" src="https://storage.googleapis.com/a1aa/image/mhDqTmqluy7gNhqD7r2heqsIxTLpZXaeMwTygbMNeFwLeXyOB.jpg" width="50"/>
-    </div>
-    <div class="bg-green-800 text-white p-4 rounded flex justify-between items-center hover:bg-green-900 hover-transform">
-     <div>
-      <h2 class="text-lg font-bold">
-       Strategic Sales Summit Group
-      </h2>
-      <p>
-       Empowering Growth through Lead Generation and Business Development
-      </p>
-     </div>
-     <img alt="Profile image of a person" class="rounded-full" height="50" src="https://storage.googleapis.com/a1aa/image/mhDqTmqluy7gNhqD7r2heqsIxTLpZXaeMwTygbMNeFwLeXyOB.jpg" width="50"/>
-    </div>
-    <div class="bg-green-800 text-white p-4 rounded flex justify-between items-center hover:bg-green-900 hover-transform">
-     <div>
-      <h2 class="text-lg font-bold">
-       Strategic Sales Summit Group
-      </h2>
-      <p>
-       Empowering Growth through Lead Generation and Business Development
-      </p>
-     </div>
-     <img alt="Profile image of a person" class="rounded-full" height="50" src="https://storage.googleapis.com/a1aa/image/mhDqTmqluy7gNhqD7r2heqsIxTLpZXaeMwTygbMNeFwLeXyOB.jpg" width="50"/>
-    </div>
-   </div>
-  </div>
-   <!-- Floating Action Button -->
-   <div class="fixed bottom-8 right-8">
-    <button class="bg-green-800 text-white p-4 rounded-full shadow-lg hover:bg-green-900 hover-transform">
-     <i class="fas fa-plus text-2xl">
-     </i>
-    </button>
-   </div>
-  <!-- Footer -->
-  <footer class="bg-black text-white py-4">
-   <div class="container mx-auto px-4 flex justify-between">
-    <div class="flex space-x-4">
-     <a class="hover:underline" href="home.html">
-      HOME
-     </a>
-     <a class="hover:underline" href="home.html">
-      Schedule
-     </a>
-     <a class="hover:underline" href="note.html">
-      Note
-     </a>
-     <a class="hover:underline" href="to do list.html">
-      To Do List
-     </a>
-     <a class="hover:underline" href="connect.html">
-      Connect
-     </a>
-     <a class="hover:underline" href="settings.html">
-      Settings
-     </a>
-    </div>
-    <div>
-     <a class="hover:underline" href="#">
-      Terms &amp; Condition
-     </a>
-    </div>
-   </div>
-  </footer>
- </body>
+</div>
+
+
+                    </main>
+                    <footer className="bg-black text-white py-2">
+                        <div className="container mx-auto px-4">
+                            <nav className="flex justify-center space-x-4 mb-4">
+                            <a href="home.html" class="text-white hover:text-gray-400 transition duration-300">HOME</a>
+                            <a href="home.html" class="text-white hover:text-gray-400 transition duration-300">Schedule</a>
+                            <a href="note.html" class="text-white hover:text-gray-400 transition duration-300">Note</a>
+                            <a href="to do list.html" class="text-white hover:text-gray-400 transition duration-300">To Do List</a>
+                            <a href="connect.html" class="text-white hover:text-gray-400 transition duration-300">Connect</a>
+                            <a href="settings.html" class="text-white hover:text-gray-400 transition duration-300">Settings</a>
+                            </nav>
+                            <p className="text-center">Terms & Condition</p>
+                        </div>
+                    </footer>
+                </div>
+            );
+        };
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
 </html>

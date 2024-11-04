@@ -1,221 +1,112 @@
 <html>
 <head>
     <title>Create Poll</title>
+    <script src="https://unpkg.com/react/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
+</head>
+<style>
+    body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f3f4f6;
             margin: 0;
             padding: 0;
-            background-color: #ffffff;
-        
-            
-            
+            animation: slide-up 1s ease-out;
+            animation-fill-mode: forwards;
         }
-        .header {
-            background-color: #1b4332;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            position: relative;
+        @keyframes slide-up {
+    from {
+        opacity: 0;
+        transform: translate(0, 50px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
         }
-        .header .close {
-            position: absolute;
-            left: 20px;
-            top: 20px;
-            font-size: 24px;
-            cursor: pointer;
-            color: #ffffff;
-        }
-        .header h1 {
-            margin: 0;
-            font-size: 36px;
-        }
-        .nav {
-            display: flex;
-            justify-content: center;
-            padding: 10px 0;
-            background-color: #ffffff;
-        }
-        .nav a {
-            margin: 0 15px;
-            text-decoration: none;
-            color: black;
-            font-size: 16px;
-        }
-        .nav .settings {
-            position: absolute;
-            right: 20px;
-            top: 20px;
-            background-color: #1b4332;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 20px;
-            text-decoration: none;
-        }
-        .container {
-            padding: 40px;
-        }
-        .container h2 {
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-        .container input[type="text"] {
-            width: calc(100% - 40px);
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #1b4332;
-            border-radius: 5px;
-            font-size: 16px;
-            color: #999999;
-        }
-        .container .options input[type="text"] {
-            width: calc(100% - 40px);
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #1b4332;
-            border-radius: 5px;
-            font-size: 16px;
-            color: #999999;
-        }
-        .container .toggle {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        .container .toggle label {
-            font-size: 16px;
-            margin-right: 10px;
-        }
-        .container .toggle input[type="checkbox"] {
-            width: 40px;
-            height: 20px;
-            -webkit-appearance: none;
-            appearance: none;
-            background-color: #ccc;
+        .search-input:focus {
             outline: none;
-            border-radius: 20px;
-            position: relative;
-            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 128, 0, 0.5);
+            transition: box-shadow 0.3s ease-in-out;
         }
-        .container .toggle input[type="checkbox"]:checked {
-            background-color: #1b4332;
-        }
-        .container .toggle input[type="checkbox"]:before {
-            content: '';
-            position: absolute;
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            background-color: white;
-            top: 1px;
-            left: 1px;
-            transition: 0.2s;
-        }
-        .container .toggle input[type="checkbox"]:checked:before {
-            transform: translateX(20px);
-        }
-        .container .done-btn {
-            background-color: #1b4332;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            position: absolute;
-            right: 40px;
-        }
-        button {
-    margin: 10px;
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    background-color: #4CAF50;
-    color: #fff;
-    cursor: pointer;
-   }
+</style>
+<body class="bg-gray-100">
+    <div id="root"></div>
+    <script type="text/babel">
+        const App = () => {
+            return (
+                <div>
+                    <nav className="flex justify-center space-x-8 py-4 bg-white shadow-md">
+                                <a href="home.html" className="text-gray-600 hover:text-gray-900 transition duration-300">Home/Schedule</a>
+                                <a href="note.html" className="text-gray-600 hover:text-gray-900 transition duration-300">Note</a>
+                                <a href="to do list.html" className="text-gray-600 hover:text-gray-900 transition duration-300">To Do List</a>
+                                <a href="connect.html" className="text-gray-600 hover:text-gray-900 transition duration-300">Connect</a>
+                        <button className="bg-green-600 text-white px-4 py-2 rounded-full hover:bg-green-700 transition duration-300"><a href="settings.html">Settings</a></button>
+                    </nav>
+                    <header className="bg-green-800 text-white p-4 flex justify-between items-center shadow-md">
+                        <div className="flex items-center">
+                            <a href="settings.html"><i className="fas fa-times text-2xl cursor-pointer hover:text-gray-300 transition duration-300"></i></a>
+                        </div>
+                        <h1 className="text-3xl font-bold">Create Poll</h1>
+                        <div></div>
+                    </header>
+                    <main className="max-w-4xl mx-auto p-8 bg-white shadow-lg mt-8 rounded-lg">
+                        <div className="mb-8">
+                            <label className="block text-lg font-bold mb-2">Question</label>
+                            <div className="flex items-center border-b border-gray-400 py-2">
+                                <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none focus:border-green-600 transition duration-300" type="text" placeholder="Ask Question" aria-label="Question" />
+                                <i className="fas fa-microphone text-gray-500"></i>
+                            </div>
+                        </div>
+                        <div className="mb-8">
+                            <label className="block text-lg font-bold mb-2">Options</label>
+                            <div className="border-b border-gray-400 py-2 mb-4">
+                                <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none focus:border-green-600 transition duration-300" type="text" placeholder="Add" aria-label="Option" />
+                            </div>
+                            <div className="border-b border-gray-400 py-2">
+                                <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none focus:border-green-600 transition duration-300" type="text" placeholder="Add" aria-label="Option" />
+                            </div>
+                        </div>
+                        <div className="flex items-center justify-between mb-8">
+                            <label className="text-lg font-bold">Allow multiple answers</label>
+                            <div className="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+                                <input type="checkbox" name="toggle" id="toggle" className="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
+                                <label htmlFor="toggle" className="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                            </div>
+                        </div>
+                        <div className="flex justify-end mt-[512px]">
+                            <button className="bg-green-800 text-white px-6 py-2 rounded hover:bg-green-900 transition duration-300">Done</button>
+                        </div>
+                    </main>
+                    <footer className="bg-black text-white py-4 mt-8">
+                        <div className="flex justify-center space-x-8 mb-4">
+                            <a href="home.html" class="text-white hover:text-gray-400 transition duration-300">HOME</a>
+                            <a href="home.html" class="text-white hover:text-gray-400 transition duration-300">Schedule</a>
+                            <a href="note.html" class="text-white hover:text-gray-400 transition duration-300">Note</a>
+                            <a href="to do list.html" class="text-white hover:text-gray-400 transition duration-300">To Do List</a>
+                            <a href="connect.html" class="text-white hover:text-gray-400 transition duration-300">Connect</a>
+                            <a href="settings.html" class="text-white hover:text-gray-400 transition duration-300">Settings</a>
+                        </div>
+                        <div className="text-center">
+                            <a href="#" className="text-white hover:text-gray-400 transition duration-300">Terms & Condition</a>
+                        </div>
+                    </footer>
+                </div>
+            );
+        };
 
-    button:hover {
-    background-color: #3e8e41;
-   }
-
-    #output {
-    margin-top: 20px;
-    font-size: 18px;
-   }
-
-    .footer {
-        background-color: #000000;
-        color: white;
-        padding: 20px;
-        text-align: center;
-        position: relative;
-        bottom: 0;
-        width: 100%;
-    }
-    .footer .nav {
-        display: flex;
-        justify-content: center;
-        padding: 10px 0;
-        background-color: transparent;
-    }
-    .footer .nav a {
-        margin: 0 15px;
-        text-decoration: none;
-        color: white;
-        font-size: 16px;
-    }
-    .footer .terms {
-        margin-top: 10px;
-        font-size: 14px;
-    }
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+    <style>
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #68D391;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #68D391;
+        }
     </style>
-</head>
-<body>
-    <div class="header">
-        <a href="settings.html"><span class="close" >&times;</span></a>
-        <h1>Create Poll</h1>
-    </div>
-    <div class="nav">
-        <a href="home.html">Home/Schedule</a>
-        <a href="note.html">Note</a>
-        <a href="to do list.html">To Do List</a>
-        <a href="connect.html">Connect</a>
-        <a href="settings.html" class="settings">Settings</a>
-    </div>
-    <div class="container">
-        <h2>Question</h2>
-        <input type="text" id="questionInput" placeholder="Ask Question">
-        <!--vocie recognition-->
-        <button id="recordBtn"><i class="fas fa-microphone" id="recordIcon"></i></button>
-        <div id="output"></div>
-        <script src="script.js"></script>
-        </i>
-        <h2>Options</h2>
-        <div class="options">
-            <input type="text" placeholder="Add">
-            <input type="text" placeholder="Add">
-        </div>
-        <div class="toggle">
-            <label>Allow multiple answers</label>
-            <input type="checkbox">
-        </div>
-        <button class="done-btn">Done</button>
-    </div>
-    <div class="footer">
-        <div class="nav">
-            <a href="home.html">HOME</a>
-            <a href="home.html">Schedule</a>
-            <a href="note.html">Note</a>
-            <a href="to do list.html">To Do List</a>
-            <a href="connect.html">Connect</a>
-            <a href="settings.html">Settings</a>
-        </div>
-        <div class="terms">
-            Terms & Condition
-        </div>
-    </div>
 </body>
 </html>
